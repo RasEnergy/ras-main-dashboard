@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model School {
+  id            String    @id @default(cuid())
+  name          String
+  businessEmail String
+  schoolId      String    @unique
+  location      String
+  businessPhone String
+  items         Item[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Student {
+  id           String    @id @default(cuid())
+  firstName    String
+  lastName     String
+  middleName   String?
+  studentId    String    @unique
+  gender       String?
+  phone        String?
+  father_phone String?   @unique
+  mother_phone String?
+  branch       String
+  grade        String
+  profileImage String?
+  status       String
+  products     Product[]
+  orders       Order[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Item {
+  id        String    @id @default(cuid())
+  name      String
+  price     Float
+  school    School    @relation(fields: [schoolId], references: [id])
+  schoolId  String
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id                    String   @id @default(cuid())
+  item                  Item     @relation(fields: [itemId], references: [id])
+  itemId                String
+  student               Student  @relation(fields: [studentId], references: [id])
+  studentId             String
+  quantity              Int
+  totalPrice            Float
+  billerReferenceNumber String   @unique
+  orders                Order[]
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model Order {
+  id               String   @id @default(cuid())
+  student          Student  @relation(fields: [studentId], references: [id])
+  studentId        String
+  parentPhone      String
+  product          Product  @relation(fields: [productId], references: [id])
+  productId        String
+  referenceNumber  String   @unique
+  transactionNumber String  @unique
+  totalPrice       Float
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model User {
+  id       String @id @default(cuid())
+  username String @unique
+  password String
+  role     String
+}
