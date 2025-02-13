@@ -1,10 +1,9 @@
 export const translations = {
 	en: {
-		title: "School Management System",
+		title: "Rasynergy",
 		hero: {
-			title: "Empower Your School with Our Management System",
-			subtitle:
-				"Streamline operations, enhance communication, and drive student success with our comprehensive solution.",
+			title: "Empower Your School",
+			subtitle: "Streamline operations, enhance communication",
 			cta: "Get Started Today",
 			learnMore: "Learn More",
 		},

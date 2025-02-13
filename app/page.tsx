@@ -292,11 +292,11 @@ export default function HomePage() {
 				</div>
 			</header>
 
-			<main className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+			<main className="max-w-7xl mx-auto px-0 sm:px-0 lg:px-8">
 				<div className="relative mb-16">
 					<div className="absolute inset-0 z-0">
 						<Image
-							src="/placeholder.svg?height=800&width=1600"
+							src="/assets/images/image_fx_ (1).jpg?height=800&width=1600"
 							alt="Hero background"
 							layout="fill"
 							objectFit="cover"
@@ -318,12 +318,12 @@ export default function HomePage() {
 								onClick={scrollToProductManagement}>
 								{t("hero.cta")}
 							</Button>
-							<Button
+							{/* <Button
 								size="lg"
 								variant="outline"
 								className="text-white border-white hover:bg-white/10 text-lg px-8 py-3 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105">
 								{t("hero.learnMore")}
-							</Button>
+							</Button> */}
 						</div>
 					</div>
 					<div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
