@@ -2,36 +2,73 @@ export const translations = {
 	en: {
 		title: "Rasynergy",
 		hero: {
-			title: "Empower Your School",
-			subtitle: "Streamline operations, enhance communication",
-			cta: "Get Started Today",
-			learnMore: "Learn More",
+			title:
+				"We have prepared school bags with the school logo and the student’s name!",
+			subtitle:
+				"We are Ras Synergy Student ID Card Solution. We accept orders! Send your Telebirr payment code, and we will deliver within 2 days!!",
+			cta: "How can I get your service?",
+			learnMore: "Learn more",
+		},
+		howToUse: {
+			title: "How can I use your service?",
+			description: "It's very simple! Follow these easy steps to get started:",
+			steps: {
+				title: "Steps to follow:",
+				step1:
+					"First, enter the student’s ID number in the 'Register Here' form below.",
+				step2:
+					"After selecting your desired item, you will receive a Telebirr payment number.",
+				step3: "Use the payment number to complete your payment via Telebirr.",
+				step4:
+					"Once the payment is completed, we will deliver within two days or send it through the school administration.",
+			},
 		},
 		features: {
-			title: "Our Features",
+			title: "Our Comprehensive Services",
+			orderButton: "Order Now",
 			studentManagement: {
 				title: "Student Management",
-				description: "Efficiently manage student information and records.",
-				content: "Keep track of student details, academic progress, and more.",
+				description: "Efficiently manage student information.",
+				content:
+					"Easily add, update, and search for student records. Our system provides a comprehensive view of each student's academic journey, including grades, attendance, and extracurricular activities.",
 				cta: "Learn More",
 			},
 			productCatalog: {
 				title: "Product Catalog",
-				description: "Browse and manage school-related products.",
-				content: "Access a wide range of educational materials and supplies.",
-				cta: "Explore Products",
+				description: "Maintain a comprehensive product catalog.",
+				content:
+					"Add, edit, and delete products with ease. Our intuitive interface allows you to manage your school's inventory, from textbooks to uniforms, ensuring you always have the right supplies on hand.",
+				cta: "Learn More",
 			},
 			orderManagement: {
 				title: "Order Management",
-				description: "Streamline the ordering process for school supplies.",
-				content: "Easily place and track orders for your educational needs.",
-				cta: "Start Ordering",
+				description: "Track and manage orders effectively.",
+				content:
+					"View order history, manage order status, and generate reports. Our order management system streamlines the process of fulfilling student and faculty requests, reducing wait times and improving satisfaction.",
+				cta: "Learn More",
+			},
+			schoolManagement: {
+				title: "School Management System",
+				description: "Revolutionize your school's administration.",
+				content:
+					"Streamline operations, enhance communication, and boost productivity with our cutting-edge school management system. From attendance tracking to performance analytics, we've got you covered! Our system integrates seamlessly with other modules to provide a comprehensive solution for your educational institution.",
+				cta: "Discover More",
+			},
+			studentInsurance: {
+				title: "Student Health Insurance System",
+				description: "Protect your students, secure their future.",
+				content:
+					"Offer peace of mind to students and parents with our comprehensive insurance system. Easily manage policies, claims, and benefits, ensuring your students are protected both on and off campus. Our system provides real-time updates and easy-to-understand policy information for all stakeholders.",
+				cta: "Explore Coverage",
 			},
 		},
 		productManagement: {
-			title: "Product Management",
+			title: "Register Here",
 			studentIdLabel: "Student ID",
 			checkStudentButton: "Check Student",
+			howToGetProduct: "How can I get your service?",
+			howToGetProductDescription:
+				"It's very simple! First, enter the student’s ID number in the 'Register Here' form below. After receiving the reference number for payment, use it to complete the payment and receive your order.",
 			studentFound: "Student found:",
 			selectItemLabel: "Select Item",
 			quantityLabel: "Quantity",
@@ -44,7 +81,7 @@ export const translations = {
 		},
 		services: {
 			title: "Our Services",
-			schoolManagement: {
+			studentManagement: {
 				title: "School Management",
 				description:
 					"Comprehensive tools for efficient school administration and resource management.",
@@ -59,6 +96,20 @@ export const translations = {
 				description:
 					"Tools for creating, managing, and optimizing educational curricula.",
 			},
+			schoolManagement: {
+				title: "School Management System",
+				description: "Revolutionize your school's administration.",
+				content:
+					"Streamline operations, enhance communication, and boost productivity with our cutting-edge school management system. From attendance tracking to performance analytics, we've got you covered!",
+				cta: "Discover More",
+			},
+			studentInsurance: {
+				title: "Student Insurance System",
+				description: "Protect your students, secure their future.",
+				content:
+					"Offer peace of mind to students and parents with our comprehensive insurance system. Easily manage policies, claims, and benefits, ensuring your students are protected both on and off campus.",
+				cta: "Explore Coverage",
+			},
 		},
 		aboutUs: {
 			title: "About Us",
@@ -67,6 +118,21 @@ export const translations = {
 			content2:
 				"Our mission is to empower schools with efficient tools, allowing educators to focus on what truly matters - providing quality education to students. We're committed to continuous improvement and innovation, always striving to meet the evolving needs of our educational institutions.",
 		},
+		testimonials: {
+			title: "What Our Users Say",
+			quote1:
+				"This system has significantly improved our school's product management process.",
+			author1: "John Doe",
+			role1: "School Administrator",
+			quote2: "The user-friendly interface makes it easy for everyone to use.",
+			author2: "Jane Smith",
+			role2: "Teacher",
+			quote3:
+				"I highly recommend this system to any school looking to streamline their operations.",
+			author3: "Peter Jones",
+			role3: "Principal",
+		},
+
 		contactUs: {
 			title: "Contact Us",
 			phone: "+251 11 123 4567",
@@ -88,41 +154,74 @@ export const translations = {
 		},
 	},
 	am: {
-		title: "የትምህርት ቤት አስተዳደር ሥርዓት",
+		title: "RasSynergy",
 		hero: {
-			title: "የእርስዎን ት/ቤት በእኛ አስተዳደር ሥርዓት ያብቁ",
+			title: "የልጆችዎ የደብተርና የምሳቃ ቦርሳ ከት/ቤቱ ሎጎ ጋር እንዲሁም ስሙን ጽፈን አዘጋጅተናል!",
 			subtitle:
-				"በኛ አקיፍ መፍትሔ የትምህርት ቤት ሥራዎችን ያቀላጥፉ፣ ግንኙነትን ያሻሽሉ እና የተማሪዎችን ስኬት ያሳድጉ።",
-			cta: "ዛሬ ይጀምሩ",
+				"እኛ Ras Synergy Student ID Card Solution እንባላለን። ትህዛዝ እንቀበላለን በቴሌብር የመክፈያ ኮድዎን በመላክ በ2ቀን ውስጥ ያሉበት እናደርሳለን!!",
+			cta: "አገልግሎታችሁን እንዴት ላግኝ?",
 			learnMore: "ተጨማሪ ይወቁ",
 		},
+		howToUse: {
+			title: "አገልግሎታችንን እንዴት መጠቀም እችላለሁ?",
+			description: "በጣም ቀላል ነው! ለመጀመር እነዚህን ቀላል ደረጃዎች ይከተሉ፡",
+			steps: {
+				title: "መከተል ያለብዎት ደረጃዎች፡",
+				step1: "በመጀመሪያ፣ የተማሪውን መታወቂያ ቁጥር ከታች ባለው 'እዚህ ይመዝገቡ' ቅጽ ላይ ያስገቡ።",
+				step2: "የፈለጉትን እቃ ከመረጡ በኋላ ለክፍያ የሚያገለግል የቴሌብር የምክፈያ ቁጥር ይቀበላሉ።",
+				step3: "ወደ ቴሌብር ሂደው የክፍያ ቁጥሩን በመጠቀም ክፍያውን ይፈጽሙ።",
+				step4:
+					"ክፍያው ከተፈጸመ በኋላ፣ በሁለት ቀናት ውስጥ እናደርሳለን ወይም በትምህርት ቤቱ አማካኝነት እንልካለን።",
+			},
+		},
 		features: {
-			title: "የእኛ ባህሪያት",
+			title: "የእኛ ሁሉን አቀፍ አገልግሎቶች",
+			orderButton: "አሁን ይዘዙ",
 			studentManagement: {
-				title: "የተማሪ አስተዳደር",
-				description: "የተማሪ መረጃን እና መዝገቦችን በብቃት ያስተዳድሩ።",
-				content: "የተማሪ ዝርዝሮችን፣ የትምህርት እድገትን እና ሌሎችንም ይከታተሉ።",
+				title: "የተማሪዎች ዲጂታል መታወቂያ ካርድ",
+				description: "የተማሪ መረጃን በብቃት ያስተዳድሩ።",
+				content:
+					"የተማሪዎች ዲጅታል መታወቂያዎች ለቤተሰብ የመውጫና የመግቢያ ሰአቶችን ለወላጅ ከማሳወቅም በላይ ከሰርቪስ ባስ መግባታቸውን እንዲሁም በሰላም መድረሳቸውን በSMS የማሳወቅቅ አቅም ከመኖሩም በላይ ከትምህርት ቤት ቅጥር ውጪ ያሉትን እንቅስቃሴዎች የGPS መግለጫዎችን በግቢ ውስጥ መጽሃፍት ቤት የስፖርት ቦታዎችን እና እንደ አስፈጊነቱ በታዘዘበት ቦታ ሁሉ መረጃዎችን የመስጠት ብቃቱ ከፍተኛ ነው።",
 				cta: "ተጨማሪ ይወቁ",
 			},
 			productCatalog: {
-				title: "የምርት ካታሎግ",
-				description: "ከትምህርት ቤት ጋር የተያያዙ ምርቶችን ይመልከቱ እና ያስተዳድሩ።",
-				content: "ሰፊ የትምህርት ቁሳቁሶችን እና አቅርቦቶችን ይጠቀሙ።",
-				cta: "ምርቶችን ያስሱ",
+				title: "የእስፖርት ልብሶች",
+				description: "የተማሪዎች የቤተሰብን አቅም ባማከለ መልኩ የተማሪዎች የእስፖርት ልብሶችን አቅርበናል::",
+				content:
+					"ምርቶችን በቀላሉ ያክሉ፣ ያርትዑ እና ይሰርዙ። የእኛ ቀላል የተጠቃሚ በይነገጽ ከመጽሐፍት እስከ ዩኒፎርሞች ድረስ የትምህርት ቤትዎን ዕቃዎች እንዲያስተዳድሩ ያስችልዎታል፣ ሁልጊዜም ትክክለኛውን አቅርቦት እንዳለዎት ያረጋግጣል።",
+				cta: "ተጨማሪ ይወቁ",
 			},
 			orderManagement: {
-				title: "የትዕዛዝ አስተዳደር",
-				description: "የትምህርት ቤት አቅርቦቶችን የማዘዝ ሂደትን ያቀላጥፉ።",
-				content: "ለትምህርት ፍላጎትዎ በቀላሉ ትዕዛዝ ያስገቡ እና ይከታተሉ።",
-				cta: "ማዘዝ ይጀምሩ",
+				title: "የትምህርት ቤት ቦርሳዎችና እና ዩኒፎርሞች",
+				description: "ትዕዛዞችን በብቃት ይከታተሉ እና ያስተዳድሩ።",
+				content:
+					"የተማሪዎች የቤተሰብን አቅም በመጠነና እኩልነትን ባሰፈነ መርሃ ግብራችን ውስጥ ከምናቀርባቸው ግበቶች ዩኒፎርም የእስፖርት ልብሶች ቦርሳ የምሳቃ መያዣን ጨምሮ እንዲሁም ጠንካራ ጫማዎችን  ከዩኒፎርማቸው ጋር ተመሳሳይ የሆኑ የተማሪው ስምና የትምህርት ቤቱን ሎጎ ያካተተ ከማዘጋጀታችንም በላይ በተማሪው በመለያ ቁጥር ሲሸመቱ የ30% ቅናሽ ማድረጋችንን ስናበስር በደስታ ነው።",
+				cta: "ተጨማሪ ይወቁ",
+			},
+			schoolManagement: {
+				title: "የትምህርት ቤት አስተዳደር ስርዓት",
+				description: "የትምህርት ቤትዎን አስተዳደር አብዮታዊ ይቀይሩ።",
+				content:
+					"በዘመናዊ የትምህርት ቤት አስተዳደር ስርዓታችን አሠራርዎን ያቃልሉ፣ ግንኙነትን ያሻሽሉ እና ምርታማነትን ያሳድጉ። ከተማሪዎች መገኘት መከታተል እስከ አፈጻጸም ትንተና ድረስ፣ ሁሉንም ተሸፍነናል! ስርዓታችን ሁሉን አቀፍ መፍትሄ ለመስጠት ከሌሎች ሞዱሎች ጋር በቀላሉ ይዋሃዳል።",
+				cta: "ተጨማሪ ይግለጡ",
+			},
+			studentInsurance: {
+				title: "የተማሪ መድን ስርዓት",
+				description: "ተማሪዎችዎን ይጠብቁ፣ የወደፊት ህይወታቸውን ያረጋግጡ።",
+				content:
+					"በሁሉን አቀፍ የመድን ስርዓታችን ለተማሪዎች እና ለወላጆች የአእምሮ ሰላምን ይስጡ። የመድን ፖሊሲዎችን፣ ጥያቄዎችን እና ጥቅማጥቅሞችን በቀላሉ ያስተዳድሩ፣ ተማሪዎችዎ በትምህርት ቤት ውስጥም ሆነ ውጭ መጠበቃቸውን ያረጋግጡ። ስርዓታችን ለሁሉም ባለድርሻ አካላት በቀጥታ ዝማኔዎችን እና ቀላል ለመረዳት የሚያስችል የፖሊሲ መረጃ ይሰጣል።",
+				cta: "ሽፋኑን ያስሱ",
 			},
 		},
 		productManagement: {
-			title: "የምርት አስተዳደር",
-			studentIdLabel: "የተማሪ መታወቂያ",
+			title: "እዚህ ይመዝገቡ",
+			studentIdLabel: "የተማሪው ID",
+			howToGetProduct: "የምታቀርቡትን አገልግሎት እንዴት ላግኝ?",
+			howToGetProductDescription:
+				"በጣም ቀላል ነው! በቅድሚያ የተማሪውን መታወቂያ ቁጥር ከታች በሚገኘው እዚህ ይመዝገቡ ቅጽ ላይ በመሙላት የሚያገኙትን የመክፈያ ቁጥር Reference number በመያዝ ከታች በምስሉ ላይ በምትመለከቱት ወደ ቴሌብር በመሄድ ያስገባሉ : ከከፈሉም በኋላ እኛ በሁለት ቀናት ውስጥ ያሉበት ድረስ እናደርሳለን ወይም በትምርት ቤቶ አማካኝነት እንልካለን::",
 			checkStudentButton: "ተማሪን ያረጋግጡ",
 			studentFound: "ተማሪ ተገኝቷል፡",
-			selectItemLabel: "እቃ ይምረጡ",
+			selectItemLabel: "የሚገዙትን እቃ ይምረጡ",
 			quantityLabel: "ብዛት",
 			totalPrice: "ጠቅላላ ዋጋ",
 			createProductButton: "ምርት ይፍጠሩ",
@@ -133,38 +232,67 @@ export const translations = {
 		},
 		services: {
 			title: "የእኛ አገልግሎቶች",
-			schoolManagement: {
-				title: "የትምህርት ቤት አስተዳደር",
-				description: "ለብቃት ያለው የትምህርት ቤት አስተዳደር እና የሀብት አስተዳደር አקፋፊ መሳሪያዎች።",
+			studentManagement: {
+				title: "የትምህርት ቤት ቦርሳዎችና እና ዩኒፎርሞች",
+				description:
+					"የተማሪዎች የቤተሰብን አቅም በመጠነና እኩልነትን ባሰፈነ መርሃ ግብራችን ውስጥ ከምናቀርባቸው ግበቶች ዩኒፎርም የእስፖርት ልብሶች ቦርሳ የምሳቃ መያዣን ጨምሮ እንዲሁም ጠንካራ ጫማዎችን  ከዩኒፎርማቸው ጋር ተመሳሳይ የሆኑ የተማሪው ስምና የትምህርት ቤቱን ሎጎ ያካተተ ከማዘጋጀታችንም በላይ በተማሪው በመለያ ቁጥር ሲሸመቱ የ30% ቅናሽ ማድረጋችንን ስናበስር በደስታ ነው።",
 			},
 			studentInformationSystem: {
-				title: "የተማሪ መረጃ ሥርዓት",
-				description: "የተማሪ መዝገቦችን፣ 출석ን እና አፈጻጸምን ለማስተዳደር የተማከለ የመረጃ ቋት።",
+				title: "የተማሪዎች ዲጂታል መታወቂያ ካርድ",
+				description:
+					"የተማሪዎች ዲጅታል መታወቂያዎች ለቤተሰብ የመውጫና የመግቢያ ሰአቶችን ለወላጅ ከማሳወቅም በላይ ከሰርቪስ ባስ መግባታቸውን እንዲሁም በሰላም መድረሳቸውን በSMS የማሳወቅቅ አቅም ከመኖሩም በላይ ከትምህርት ቤት ቅጥር ውጪ ያሉትን እንቅስቃሴዎች የGPS መግለጫዎችን በግቢ ውስጥ መጽሃፍት ቤት የስፖርት ቦታዎችን እና እንደ አስፈጊነቱ በታዘዘበት ቦታ ሁሉ መረጃዎችን የመስጠት ብቃቱ ከፍተኛ ነው።",
 			},
 			curriculumPlanning: {
-				title: "የሥርዓተ ትምህርት ዕቅድ",
-				description: "የትምህርት ሥርዓቶችን ለመፍጠር፣ ለማስተዳደር እና ለማሻሻል መሳሪያዎች።",
+				title: "የእስፖርት ልብሶች",
+				description: "የተማሪዎች የቤተሰብን አቅም ባማከለ መልኩ የተማሪዎች የእስፖርት ልብሶችን አቅርበናል::",
+			},
+			schoolManagement: {
+				title: "የትምህርት ቤት አስተዳደር ስርዓት",
+				description: "የትምህርት ቤትዎን አስተዳደር አብዮታዊ ይቀይሩ።",
+				content:
+					"በዘመናዊ የትምህርት ቤት አስተዳደር ስርዓታችን አሠራርዎን ያቃልሉ፣ ግንኙነትን ያሻሽሉ እና ምርታማነትን ያሳድጉ። ከተማሪዎች መገኘት መከታተል እስከ አፈጻጸም ትንተና ድረስ፣ ሁሉንም ተሸፍነናል!",
+				cta: "ተጨማሪ ይግለጡ",
+			},
+			studentInsurance: {
+				title: "የተማሪ መድን ስርዓት",
+				description: "ተማሪዎችዎን ይጠብቁ፣ የወደፊት ህይወታቸውን ያረጋግጡ።",
+				content:
+					"በሁሉን አቀፍ የመድን ስርዓታችን ለተማሪዎች እና ለወላጆች የአእምሮ ሰላምን ይስጡ። የመድን ፖሊሲዎችን፣ ጥያቄዎችን እና ጥቅማጥቅሞችን በቀላሉ ያስተዳድሩ፣ ተማሪዎችዎ በትምህርት ቤት ውስጥም ሆነ ውጭ መጠበቃቸውን ያረጋግጡ።",
+				cta: "ሽፋኑን ያስሱ",
 			},
 		},
+		testimonials: {
+			title: "ተጠቃሚዎቻችን ምን ይላሉ",
+			quote1: "ይህ ስርዓት የትምህርት ቤታችንን የምርት አስተዳደር ሂደት በእጅጉ አሻሽሏል።",
+			author1: "ዮሐንስ ዶ",
+			role1: "የትምህርት ቤት አስተዳዳሪ",
+			quote2: "ተጠቃሚ ለመሆን ቀላል የሆነ በይነገጽ ለሁሉም ሰው ቀላል ያደርገዋል።",
+			author2: "ጃን ስሚዝ",
+			role2: "መምህር",
+			quote3: "ስራቸውን ለማመቻቸት ለሚፈልጉ ማናቸውም ትምህርት ቤቶች ይህንን ስርዓት እመክራለሁ።",
+			author3: "ጴጥሮስ ጆንስ",
+			role3: "ዳይሬክተር",
+		},
+
 		aboutUs: {
 			title: "ስለ እኛ",
 			content1:
-				"የእኛ የትምህርት ቤት አስተዳደር ሥርዓት የትምህርት አስተዳደርን ለማהደስ ቁርጠኛ ነው። በትምህርትም ሆነ በቴክኖሎጂ ዘርፍ ባለን ብዙ ዓመታት ልምድ፣ በኢትዮጵያ ትምህርት ቤቶች ያሉትን ייחודיים ፈተናዎች የሚፈታ አקיፍ መድረክ አዘጋጅተናል።",
+				"ራስሲነርጂ ID ካርድ ሶልዊሽን እና ህትመት ድርጅት የተለያዩ የህትመት ስራዎችና የተማሪዎች ዲጂታል መታወቂያ ካርድ እንዲሁም ለተማሪ ልጆች አስፈላጊ የሆኑ ወሳኝ የትምህርት መገልገያ መሳሪያዎችን በአነስተኛ ዋጋ የሚያቀርብ ድርጅት ነው::",
 			content2:
-				"ተልዕኮአችን ትምህርት ቤቶችን በብቃት ያላቸው መሳሪያዎች ማብቃት ነው፣ በዚህም አስተማሪዎች በትክክል በሚያስፈልገው ነገር - ለተማሪዎች ጥራት ያለው ትምህርት መስጠት ላይ እንዲያተኩሩ ያስችላል። ለቀጣይነት ያለው መሻሻል እና ለአዳዲስ ነገሮች ቁርጠኞች ነን፣ ሁልጊዜም የትምህርት ተቋማትን እየተለወጠ የሚሄደውን ፍላጎት ለማሟላት እንጥራለን።",
+				"በተጨማሪም ከተለያዩ ትምህርት ቤቶች ጋር በአጋርነት በመሆን የተማሪዎችን ስም እና የትምህርት ቤት አርማዎች የታተመባቸው ቦርሳዎች፣ የምሳ እቃዎች እና ዩኒፎርሞችን ከገብያ ሂሳብ በታላቅ ቅናሽ ለወላጆች ያቀርባል በዚህ እድል ይጠቀሙ ስንል በደስታ ነው::",
 		},
 		contactUs: {
 			title: "ያግኙን",
-			phone: "+251 11 123 4567",
-			email: "info@schoolmanagementsystem.com",
-			address: "123 ዋና መንገድ፣ አዲስ አበባ፣ ኢትዮጵያ",
+			phone: "+251 906904646 | +251 925546527",
+			email: "info@rasynergy.com",
+			address: "የካ ኮተቤ 02 የኢትዮጵያ ንግድ ባንክ 2ኛ ፎቅ, #207",
 		},
 		nav: {
 			login: "ግባ",
 			signup: "ተመዝገብ",
 		},
 		footer: {
-			copyright: "© 2023 የትምህርት ቤት አስተዳደር ሥርዓት። መብቱ በህግ የተጠበቀ ነው።",
+			copyright: "© 2024 ራሲነርጂ አስተዳደር ሥርዓት። መብቱ በህግ የተጠበቀ ነው።",
 		},
 		modal: {
 			title: "ምርት በተሳካ ሁኔታ ተፈጥሯል",

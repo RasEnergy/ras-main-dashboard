@@ -30,6 +30,8 @@ import {
 	Phone,
 	Mail,
 	MapPin,
+	Shield,
+	GraduationCap,
 } from "lucide-react";
 import { translations, type Language } from "@/lib/translations";
 import { useToast } from "@/components/ui/use-toast";
@@ -62,7 +64,7 @@ const styles = {
 
 export default function HomePage() {
 	const [isOpen, setIsOpen] = useState(false);
-	const [lang, setLang] = useState<Language>("en");
+	const [lang, setLang] = useState<Language>("am");
 	const [studentId, setStudentId] = useState("");
 	const [selectedStudent, setSelectedStudent] = useState<any>(null);
 	const [availableItems, setAvailableItems] = useState<any[]>([]);
@@ -72,7 +74,18 @@ export default function HomePage() {
 	const { toast } = useToast();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [billerReferenceNumber, setBillerReferenceNumber] = useState("");
+	const [selectedService, setSelectedService] = useState(null);
+	const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
+	const contactRef = useRef<HTMLDivElement>(null);
 
+	const scrollToContact = () => {
+		contactRef.current?.scrollIntoView({ behavior: "smooth" });
+	};
+
+	const openServiceModal = (service: any) => {
+		setSelectedService(service);
+		setIsServiceModalOpen(true);
+	};
 	const productManagementRef = useRef<HTMLDivElement>(null);
 
 	const t = (key: string) => {
@@ -224,14 +237,21 @@ export default function HomePage() {
 	return (
 		<div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
 			<header className="bg-white shadow-md sticky top-0 z-10 border-b border-gray-200">
-				<div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+				<div className="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 					<div className="flex items-center">
-						<School className="h-8 w-8 text-[#881337] mr-2" />
-						<h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+						{/* <School className="h-8 w-8 text-[#881337] mr-2" /> */}
+						<Image
+							src="/assets/images/logo.png"
+							alt="logo background"
+							width={75}
+							height={35}
+							className="rounded-lg"
+						/>
+						{/* <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
 							{t("title")}
-						</h1>
+						</h1> */}
 					</div>
-					<nav className="hidden md:flex items-center space-x-4">
+					<div>
 						<Select
 							value={lang}
 							onValueChange={(value: Language) => setLang(value)}>
@@ -239,19 +259,21 @@ export default function HomePage() {
 								<SelectValue placeholder="Language" />
 							</SelectTrigger>
 							<SelectContent>
-								<SelectItem value="en">English</SelectItem>
 								<SelectItem value="am">አማርኛ</SelectItem>
+								<SelectItem value="en">English</SelectItem>
 							</SelectContent>
 						</Select>
-						<Link href="/login" passHref>
-							<Button variant="outline">{t("nav.login")}</Button>
-						</Link>
-						<Link href="/signup" passHref>
-							<Button className="bg-[#881337] hover:bg-[#6e0f2d] text-white">
-								{t("nav.signup")}
-							</Button>
-						</Link>
-					</nav>
+						<nav className="hidden md:flex items-center space-x-4">
+							<Link href="/login" passHref>
+								<Button variant="outline">{t("nav.login")}</Button>
+							</Link>
+							<Link href="/signup" passHref>
+								<Button className="bg-[#881337] hover:bg-[#6e0f2d] text-white">
+									{t("nav.signup")}
+								</Button>
+							</Link>
+						</nav>
+					</div>
 					<Sheet open={isOpen} onOpenChange={setIsOpen}>
 						<SheetTrigger asChild className="md:hidden">
 							<Button variant="outline" size="icon">
@@ -267,8 +289,8 @@ export default function HomePage() {
 										<SelectValue placeholder="Language" />
 									</SelectTrigger>
 									<SelectContent>
-										<SelectItem value="en">English</SelectItem>
 										<SelectItem value="am">አማርኛ</SelectItem>
+										<SelectItem value="en">English</SelectItem>
 									</SelectContent>
 								</Select>
 								<Link href="/login" passHref>
@@ -293,19 +315,20 @@ export default function HomePage() {
 			</header>
 
 			<main className="max-w-7xl mx-auto px-0 sm:px-0 lg:px-8">
+				{/* Hero */}
 				<div className="relative mb-16">
 					<div className="absolute inset-0 z-0">
 						<Image
-							src="/assets/images/image_fx_ (1).jpg?height=800&width=1600"
+							src="/assets/images/hero4.png?height=800&width=1600"
 							alt="Hero background"
 							layout="fill"
 							objectFit="cover"
 							className="rounded-lg"
 						/>
-						<div className="absolute inset-0 bg-gradient-to-r from-[#881337]/80 to-[#6e0f2d]/80 mix-blend-multiply" />
+						{/* <div className="absolute inset-0 bg-gradient-to-r from-[#881337]/80 to-[#6e0f2d]/80 mix-blend-multiply" /> */}
 					</div>
 					<div className="relative z-10 text-center py-32 px-4 sm:py-48 sm:px-6 lg:px-8">
-						<h2 className="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight lg:text-6xl mb-4 drop-shadow-lg animate-fade-in-up">
+						<h2 className="text-4xl font-extrabold text-white text-left sm:text-5xl sm:tracking-tight lg:text-6xl mb-4 drop-shadow-lg animate-fade-in-up">
 							{t("hero.title")}
 						</h2>
 						<p className="mt-6 max-w-lg mx-auto text-xl text-white/90 drop-shadow-lg animate-fade-in-up animation-delay-200">
@@ -318,17 +341,51 @@ export default function HomePage() {
 								onClick={scrollToProductManagement}>
 								{t("hero.cta")}
 							</Button>
-							{/* <Button
-								size="lg"
-								variant="outline"
-								className="text-white border-white hover:bg-white/10 text-lg px-8 py-3 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105">
-								{t("hero.learnMore")}
-							</Button> */}
 						</div>
 					</div>
 					<div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
 				</div>
 
+				{/* howToUse */}
+				<div className="mb-16">
+					<h2 className="text-3xl font-extrabold text-center mb-8">
+						{t("howToUse.title")}
+					</h2>
+					<Card className="shadow-lg overflow-hidden">
+						<div className="md:flex">
+							<div className="md:flex-shrink-0">
+								<Image
+									className="h-full m-auto object-cover md:w-48"
+									src="/assets/images/telebirr.png"
+									alt="TeleBirr Logo"
+									width={192}
+									height={192}
+								/>
+							</div>
+							<div className="p-8">
+								<CardTitle className="block mt-1 text-lg leading-tight font-medium text-[#881337] hover:underline mb-2">
+									{t("howToUse.title")}
+								</CardTitle>
+								<p className="mt-2 text-gray-500">
+									{t("howToUse.description")}
+								</p>
+								<div className="mt-4">
+									<h3 className="text-lg font-semibold mb-2">
+										{t("howToUse.steps.title")}
+									</h3>
+									<ol className="list-decimal list-inside space-y-2">
+										<li>{t("howToUse.steps.step1")}</li>
+										<li>{t("howToUse.steps.step2")}</li>
+										<li>{t("howToUse.steps.step3")}</li>
+										<li>{t("howToUse.steps.step4")}</li>
+									</ol>
+								</div>
+							</div>
+						</div>
+					</Card>
+				</div>
+
+				{/* productManagement */}
 				<div ref={productManagementRef} className="mb-16">
 					<h2 className="text-3xl font-extrabold text-center mb-8">
 						{t("productManagement.title")}
@@ -417,6 +474,7 @@ export default function HomePage() {
 					</Card>
 				</div>
 
+				{/* Feature Title */}
 				<div className="relative mb-16">
 					<div
 						className="absolute inset-0 flex items-center"
@@ -430,99 +488,162 @@ export default function HomePage() {
 					</div>
 				</div>
 
-				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-16">
-					<Card className="transform transition duration-500 hover:scale-105 shadow-lg overflow-hidden">
-						<div className="h-48 w-full relative">
-							<Image
-								src="/placeholder.svg?height=200&width=400"
-								alt="Student Management"
-								layout="fill"
-								objectFit="cover"
-							/>
-						</div>
-						<CardHeader>
-							<CardTitle className="flex items-center text-[#881337]">
-								<Users className="mr-2" />
-								{t("features.studentManagement.title")}
-							</CardTitle>
-							<CardDescription>
-								{t("features.studentManagement.description")}
-							</CardDescription>
-						</CardHeader>
-						<CardContent>
-							<p>{t("features.studentManagement.content")}</p>
-						</CardContent>
-						<CardFooter>
-							<Button
-								variant="outline"
-								className="w-full hover:bg-[#881337] hover:text-white">
-								{t("features.studentManagement.cta")}
-							</Button>
-						</CardFooter>
-					</Card>
+				<div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-16">
+						{[
+							{
+								title: t("features.studentManagement.title"),
+								description: t("features.studentManagement.description"),
+								content: t("features.studentManagement.content"),
+								cta: t("features.studentManagement.cta"),
+								icon: <Users className="h-6 w-6" />,
+								images: [
+									"/assets/images/products/id1.jpg?height=400&width=600",
+									"/assets/images/products/id2.jpg?height=400&width=600",
+								],
+							},
 
-					<Card className="transform transition duration-500 hover:scale-105 shadow-lg overflow-hidden">
-						<div className="h-48 w-full relative">
-							<Image
-								src="/placeholder.svg?height=200&width=400"
-								alt="Product Catalog"
-								layout="fill"
-								objectFit="cover"
-							/>
-						</div>
-						<CardHeader>
-							<CardTitle className="flex items-center text-[#881337]">
-								<BookOpen className="mr-2" />
-								{t("features.productCatalog.title")}
-							</CardTitle>
-							<CardDescription>
-								{t("features.productCatalog.description")}
-							</CardDescription>
-						</CardHeader>
-						<CardContent>
-							<p>{t("features.productCatalog.content")}</p>
-						</CardContent>
-						<CardFooter>
-							<Button
-								variant="outline"
-								className="w-full hover:bg-[#881337] hover:text-white">
-								{t("features.productCatalog.cta")}
-							</Button>
-						</CardFooter>
-					</Card>
-
-					<Card className="transform transition duration-500 hover:scale-105 shadow-lg overflow-hidden">
-						<div className="h-48 w-full relative">
-							<Image
-								src="/placeholder.svg?height=200&width=400"
-								alt="Order Management"
-								layout="fill"
-								objectFit="cover"
-							/>
-						</div>
-						<CardHeader>
-							<CardTitle className="flex items-center text-[#881337]">
-								<School className="mr-2" />
-								{t("features.orderManagement.title")}
-							</CardTitle>
-							<CardDescription>
-								{t("features.orderManagement.description")}
-							</CardDescription>
-						</CardHeader>
-						<CardContent>
-							<p>{t("features.orderManagement.content")}</p>
-						</CardContent>
-						<CardFooter>
-							<Button
-								variant="outline"
-								className="w-full hover:bg-[#881337] hover:text-white">
-								{t("features.orderManagement.cta")}
-							</Button>
-						</CardFooter>
-					</Card>
+							{
+								title: t("features.orderManagement.title"),
+								description: t("features.orderManagement.description"),
+								content: t("features.orderManagement.content"),
+								cta: t("features.orderManagement.cta"),
+								icon: <School className="h-6 w-6" />,
+								images: [
+									"/assets/images/products/bag.jpg?height=400&width=600",
+									"/assets/images/products/bag2.jpg?height=400&width=600",
+								],
+							},
+							{
+								title: t("features.schoolManagement.title"),
+								description: t("features.schoolManagement.description"),
+								content: t("features.schoolManagement.content"),
+								cta: t("features.schoolManagement.cta"),
+								icon: <GraduationCap className="h-6 w-6" />,
+								images: [
+									"/assets/images/products/sms1.jpg?height=400&width=600",
+									"/assets/images/products/sms2.jpg?height=400&width=600",
+								],
+							},
+							{
+								title: t("features.studentInsurance.title"),
+								description: t("features.studentInsurance.description"),
+								content: t("features.studentInsurance.content"),
+								cta: t("features.studentInsurance.cta"),
+								icon: <Shield className="h-6 w-6" />,
+								images: [
+									"/assets/images/products/helath1.jpg?height=400&width=600",
+									"/assets/images/products/health2.jpg?height=400&width=600",
+									"/assets/images/products/health3.jpg?height=400&width=600",
+								],
+							},
+							{
+								title: t("features.productCatalog.title"),
+								description: t("features.productCatalog.description"),
+								content: t("features.productCatalog.content"),
+								cta: t("features.productCatalog.cta"),
+								icon: <BookOpen className="h-6 w-6" />,
+								images: [
+									"/assets/images/products/sport1.jpg?height=400&width=600",
+									"/assets/images/products/sport2.jpg?height=400&width=600",
+								],
+							},
+						].map((service, index) => (
+							<Card
+								key={index}
+								className="transform transition duration-500 hover:scale-105 shadow-lg overflow-hidden cursor-pointer"
+								onClick={() => openServiceModal(service)}>
+								<div className="h-48 w-full relative">
+									<Image
+										src={service.images[0] || "/placeholder.svg"}
+										alt={service.title}
+										layout="fill"
+										objectFit="cover"
+									/>
+								</div>
+								<CardHeader>
+									<CardTitle className="flex items-center text-[#881337]">
+										{service.icon}
+										<span className="ml-2">{service.title}</span>
+									</CardTitle>
+									<CardDescription>{service.description}</CardDescription>
+								</CardHeader>
+								<CardContent>
+									<p>{service.content}</p>
+								</CardContent>
+								<CardFooter>
+									<Button
+										variant="outline"
+										className="w-full hover:bg-[#881337] hover:text-white"
+										onClick={(e) => {
+											e.stopPropagation();
+											scrollToContact();
+										}}>
+										{t("features.orderButton")}
+									</Button>
+								</CardFooter>
+							</Card>
+						))}
+					</div>
 				</div>
 
-				<div className="mb-16">
+				<Dialog open={isServiceModalOpen} onOpenChange={setIsServiceModalOpen}>
+					<DialogContent className="max-w-4xl">
+						<DialogHeader>
+							<DialogTitle className="text-2xl font-bold text-[#881337] flex items-center">
+								{(selectedService as any)?.icon}
+								<span className="ml-2">{(selectedService as any)?.title}</span>
+							</DialogTitle>
+						</DialogHeader>
+						<div className="mt-4">
+							<div className="relative h-64 md:h-96 mb-4">
+								<Image
+									src={
+										(selectedService as any)?.images[0] ||
+										"/placeholder.svg?height=600&width=800"
+									}
+									alt={(selectedService as any)?.title}
+									layout="fill"
+									objectFit="cover"
+									className="rounded-lg"
+								/>
+							</div>
+							<p className="text-lg mb-4">
+								{(selectedService as any)?.description}
+							</p>
+							<p className="mb-4">{(selectedService as any)?.content}</p>
+							<div className="grid grid-cols-2 gap-4">
+								{(selectedService as any)?.images
+									.slice(1)
+									.map((img: any, index: any) => (
+										<div key={index} className="relative h-32">
+											<Image
+												src={img || "/placeholder.svg"}
+												alt={`${(selectedService as any)?.title} image ${
+													index + 2
+												}`}
+												layout="fill"
+												objectFit="cover"
+												className="rounded-lg"
+											/>
+										</div>
+									))}
+							</div>
+						</div>
+						<DialogFooter>
+							<Button onClick={() => setIsServiceModalOpen(false)}>
+								Close
+							</Button>
+							<Button
+								onClick={scrollToContact}
+								className="bg-[#881337] hover:bg-[#6e0f2d] text-white">
+								{t("features.orderButton")}
+							</Button>
+						</DialogFooter>
+					</DialogContent>
+				</Dialog>
+				{/* services */}
+				{/* <div className="mb-16">
 					<h2 className="text-3xl font-extrabold text-center mb-8">
 						{t("services.title")}
 					</h2>
@@ -530,7 +651,7 @@ export default function HomePage() {
 						<Card className="shadow-lg overflow-hidden">
 							<div className="h-48 w-full relative">
 								<Image
-									src="/placeholder.svg?height=200&width=400"
+									src="/assets/images/products/bag.jpg?height=200&width=400"
 									alt="School Management"
 									layout="fill"
 									objectFit="cover"
@@ -539,17 +660,17 @@ export default function HomePage() {
 							<CardHeader>
 								<CardTitle className="flex items-center text-[#881337]">
 									<School className="mr-2" />
-									{t("services.schoolManagement.title")}
+									{t("services.studentManagement.title")}
 								</CardTitle>
 							</CardHeader>
 							<CardContent>
-								<p>{t("services.schoolManagement.description")}</p>
+								<p>{t("services.studentManagement.description")}</p>
 							</CardContent>
 						</Card>
 						<Card className="shadow-lg overflow-hidden">
 							<div className="h-48 w-full relative">
 								<Image
-									src="/placeholder.svg?height=200&width=400"
+									src="/assets/images/products/id1.jpg?height=200&width=400"
 									alt="Student Information System"
 									layout="fill"
 									objectFit="cover"
@@ -565,10 +686,70 @@ export default function HomePage() {
 								<p>{t("services.studentInformationSystem.description")}</p>
 							</CardContent>
 						</Card>
-						<Card className="shadow-lg overflow-hidden">
+
+						<Card className="transform transition duration-500 hover:scale-105 shadow-lg overflow-hidden">
 							<div className="h-48 w-full relative">
 								<Image
 									src="/placeholder.svg?height=200&width=400"
+									alt="School Management System"
+									layout="fill"
+									objectFit="cover"
+								/>
+							</div>
+							<CardHeader>
+								<CardTitle className="flex items-center text-[#881337]">
+									<GraduationCap className="mr-2" />
+									{t("services.schoolManagement.title")}
+								</CardTitle>
+								<CardDescription>
+									{t("services.schoolManagement.description")}
+								</CardDescription>
+							</CardHeader>
+							<CardContent>
+								<p>{t("services.schoolManagement.content")}</p>
+							</CardContent>
+							<CardFooter>
+								<Button
+									variant="outline"
+									className="w-full hover:bg-[#881337] hover:text-white">
+									{t("services.schoolManagement.cta")}
+								</Button>
+							</CardFooter>
+						</Card>
+
+						<Card className="transform transition duration-500 hover:scale-105 shadow-lg overflow-hidden">
+							<div className="h-48 w-full relative">
+								<Image
+									src="/placeholder.svg?height=200&width=400"
+									alt="Student Insurance System"
+									layout="fill"
+									objectFit="cover"
+								/>
+							</div>
+							<CardHeader>
+								<CardTitle className="flex items-center text-[#881337]">
+									<Shield className="mr-2" />
+									{t("services.studentInsurance.title")}
+								</CardTitle>
+								<CardDescription>
+									{t("services.studentInsurance.description")}
+								</CardDescription>
+							</CardHeader>
+							<CardContent>
+								<p>{t("services.studentInsurance.content")}</p>
+							</CardContent>
+							<CardFooter>
+								<Button
+									variant="outline"
+									className="w-full hover:bg-[#881337] hover:text-white">
+									{t("services.studentInsurance.cta")}
+								</Button>
+							</CardFooter>
+						</Card>
+						<Card className="shadow-lg overflow-hidden">
+							<div className="h-48 w-full relative">
+								<Image
+									src="/assets/images/products/sport1.jpg?height=200&width=400"
 									alt="Curriculum Planning"
 									layout="fill"
 									objectFit="cover"
@@ -585,8 +766,50 @@ export default function HomePage() {
 							</CardContent>
 						</Card>
 					</div>
+				</div> */}
+				<div className="mb-16 bg-[#881337] text-white py-12 rounded-lg">
+					<h2 className="text-3xl font-extrabold text-center mb-8">
+						{t("testimonials.title")}
+					</h2>
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+						{[
+							{
+								quote: t("testimonials.quote1"),
+								author: t("testimonials.author1"),
+								role: t("testimonials.role1"),
+							},
+							{
+								quote: t("testimonials.quote2"),
+								author: t("testimonials.author2"),
+								role: t("testimonials.role2"),
+							},
+							{
+								quote: t("testimonials.quote3"),
+								author: t("testimonials.author3"),
+								role: t("testimonials.role3"),
+							},
+						].map((testimonial, index) => (
+							<Card key={index} className="bg-white text-gray-800">
+								<CardContent className="pt-6">
+									<blockquote className="text-lg font-medium mb-4">
+										"{testimonial.quote}"
+									</blockquote>
+									<div className="flex items-center">
+										<div className="rounded-full bg-[#881337] text-white p-2 mr-4">
+											<Users className="h-6 w-6" />
+										</div>
+										<div>
+											<p className="font-semibold">{testimonial.author}</p>
+											<p className="text-sm text-gray-500">
+												{testimonial.role}
+											</p>
+										</div>
+									</div>
+								</CardContent>
+							</Card>
+						))}
+					</div>
 				</div>
-
 				<div className="mb-16">
 					<h2 className="text-3xl font-extrabold text-center mb-8">
 						{t("aboutUs.title")}
@@ -598,8 +821,7 @@ export default function HomePage() {
 						</CardContent>
 					</Card>
 				</div>
-
-				<div className="mb-16">
+				<div ref={contactRef} className="mb-16">
 					<h2 className="text-3xl font-extrabold text-center mb-8">
 						{t("contactUs.title")}
 					</h2>
