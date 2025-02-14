@@ -1,10 +1,11 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_Ethiopic } from "next/font/google";
 import type { Metadata } from "next";
 import type React from "react";
 import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
+const notoSansEthiopic = Noto_Sans_Ethiopic({ subsets: ["ethiopic"] });
 
 export const metadata: Metadata = {
 	title: "School Management System",
@@ -19,7 +20,8 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className="h-full bg-gray-100">
-			<body className={`${inter.className} h-full`}>
+			<body
+				className={`${inter.className} ${notoSansEthiopic.className} h-full`}>
 				<Toaster />
 				{children}
 			</body>

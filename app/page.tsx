@@ -43,6 +43,7 @@ import {
 	DialogFooter,
 } from "@/components/ui/dialog";
 import { Copy } from "lucide-react";
+import { useTranslation } from "next-i18next";
 
 const fadeInUpKeyframes = {
 	"0%": { opacity: "0", transform: "translateY(10px)" },
@@ -77,6 +78,9 @@ export default function HomePage() {
 	const [selectedService, setSelectedService] = useState(null);
 	const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
 	const contactRef = useRef<HTMLDivElement>(null);
+
+	const { i18n } = useTranslation();
+	const isAmharic = i18n.language === "am";
 
 	const scrollToContact = () => {
 		contactRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -235,7 +239,10 @@ export default function HomePage() {
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+		<div
+			className={`min-h-screen bg-gradient-to-b from-gray-50 to-white ${
+				lang ? "font-amharic" : "font-sans"
+			}`}>
 			<header className="bg-white shadow-md sticky top-0 z-10 border-b border-gray-200">
 				<div className="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 					<div className="flex items-center">
@@ -313,7 +320,6 @@ export default function HomePage() {
 					</Sheet>
 				</div>
 			</header>
-
 			<main className="max-w-7xl mx-auto px-0 sm:px-0 lg:px-8">
 				{/* Hero */}
 				<div className="relative mb-16">
@@ -843,7 +849,6 @@ export default function HomePage() {
 					</Card>
 				</div>
 			</main>
-
 			<Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
 				<DialogContent>
 					<DialogHeader>
@@ -869,7 +874,6 @@ export default function HomePage() {
 					</DialogFooter>
 				</DialogContent>
 			</Dialog>
-
 			<footer className="bg-gray-50 mt-12 border-t border-gray-200">
 				<div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
 					<p className="text-center text-base text-gray-500">
