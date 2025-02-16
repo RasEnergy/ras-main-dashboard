@@ -21,18 +21,18 @@ model School {
 
 model Student {
   id           String    @id @default(cuid())
-  firstName    String
-  lastName     String
+  firstName    String?
+  lastName     String?
   middleName   String?
   studentId    String    @unique
   gender       String?
   phone        String?
-  father_phone String?   @unique
+  father_phone String?
   mother_phone String?
   branch       String
-  grade        String
+  grade        String?
   profileImage String?
-  status       String
+  status       String?
   products     Product[]
   orders       Order[]
   createdAt    DateTime  @default(now())
