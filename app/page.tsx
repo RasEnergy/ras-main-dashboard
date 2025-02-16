@@ -80,7 +80,6 @@ export default function HomePage() {
 	const contactRef = useRef<HTMLDivElement>(null);
 
 	const { i18n } = useTranslation();
-	const isAmharic = i18n.language === "am";
 
 	const scrollToContact = () => {
 		contactRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -90,7 +89,9 @@ export default function HomePage() {
 		setSelectedService(service);
 		setIsServiceModalOpen(true);
 	};
+
 	const productManagementRef = useRef<HTMLDivElement>(null);
+	const howToUseRef = useRef<HTMLDivElement>(null);
 
 	const t = (key: string) => {
 		return key.split(".").reduce((o, i) => o[i], translations[lang] as any);
@@ -101,6 +102,15 @@ export default function HomePage() {
 	};
 
 	const checkStudent = useCallback(async () => {
+		if (!studentId.trim()) {
+			toast({
+				title: t("productManagement.errorCheckingStudent"),
+				description: t("productManagement.emptyStudentId"),
+				variant: "destructive",
+			});
+			return;
+		}
+
 		try {
 			const response = await fetch(`/api/students?studentId=${studentId}`);
 			if (!response.ok) {
@@ -137,7 +147,45 @@ export default function HomePage() {
 				variant: "destructive",
 			});
 		}
-	}, [studentId, toast, t]);
+	}, [studentId, toast]);
+	// const checkStudent = useCallback(async () => {
+	// 	try {
+	// 		const response = await fetch(`/api/students?studentId=${studentId}`);
+	// 		if (!response.ok) {
+	// 			throw new Error("Failed to fetch student");
+	// 		}
+	// 		const data = await response.json();
+	// 		if (data) {
+	// 			setSelectedStudent({
+	// 				...data,
+	// 				fullName: `${data.firstName} ${data.lastName}`,
+	// 			});
+	// 			const schoolId = data.studentId.substring(0, 4);
+	// 			const itemsResponse = await fetch(`/api/items?schoolId=${schoolId}`);
+	// 			if (!itemsResponse.ok) {
+	// 				throw new Error("Failed to fetch items");
+	// 			}
+	// 			const itemsData = await itemsResponse.json();
+	// 			setAvailableItems(itemsData.items);
+	// 			toast({
+	// 				title: t("productManagement.studentFound"),
+	// 			});
+	// 		} else {
+	// 			setSelectedStudent(null);
+	// 			setAvailableItems([]);
+	// 			toast({
+	// 				title: t("productManagement.studentNotFound"),
+	// 				variant: "destructive",
+	// 			});
+	// 		}
+	// 	} catch (error) {
+	// 		console.error("Error checking student:", error);
+	// 		toast({
+	// 			title: t("productManagement.errorCheckingStudent"),
+	// 			variant: "destructive",
+	// 		});
+	// 	}
+	// }, [studentId, toast, t]);
 
 	const handleItemChange = useCallback(
 		(itemId: string) => {
@@ -320,6 +368,7 @@ export default function HomePage() {
 					</Sheet>
 				</div>
 			</header>
+
 			<main className="max-w-7xl mx-auto px-0 sm:px-0 lg:px-8">
 				{/* Hero */}
 				<div className="relative mb-16">
@@ -337,14 +386,16 @@ export default function HomePage() {
 						<h2 className="text-4xl font-extrabold text-white text-left sm:text-5xl sm:tracking-tight lg:text-6xl mb-4 drop-shadow-lg animate-fade-in-up">
 							{t("hero.title")}
 						</h2>
-						<p className="mt-6 max-w-lg mx-auto text-xl text-white/90 drop-shadow-lg animate-fade-in-up animation-delay-200">
+						<p className="mt-6 max-w-lg mx-auto text-left text-xl text-white/90 drop-shadow-lg animate-fade-in-up animation-delay-200">
 							{t("hero.subtitle")}
 						</p>
 						<div className="mt-10 flex justify-center gap-4 animate-fade-in-up animation-delay-400">
 							<Button
 								size="lg"
 								className="bg-white text-[#881337] hover:bg-gray-100 text-lg px-8 py-3 rounded-full shadow-lg transform transition duration-300 ease-in-out hover:scale-105"
-								onClick={scrollToProductManagement}>
+								onClick={() =>
+									howToUseRef.current?.scrollIntoView({ behavior: "smooth" })
+								}>
 								{t("hero.cta")}
 							</Button>
 						</div>
@@ -353,21 +404,12 @@ export default function HomePage() {
 				</div>
 
 				{/* howToUse */}
-				<div className="mb-16">
-					<h2 className="text-3xl font-extrabold text-center mb-8">
+				<div ref={howToUseRef} className="mb-16">
+					<h2 className="text-3xl font-extrabold text-center mb-8 px-3">
 						{t("howToUse.title")}
 					</h2>
 					<Card className="shadow-lg overflow-hidden">
 						<div className="md:flex">
-							<div className="md:flex-shrink-0">
-								<Image
-									className="h-full m-auto object-cover md:w-48"
-									src="/assets/images/telebirr.png"
-									alt="TeleBirr Logo"
-									width={192}
-									height={192}
-								/>
-							</div>
 							<div className="p-8">
 								<CardTitle className="block mt-1 text-lg leading-tight font-medium text-[#881337] hover:underline mb-2">
 									{t("howToUse.title")}
@@ -387,12 +429,116 @@ export default function HomePage() {
 									</ol>
 								</div>
 							</div>
+							<div className="md:flex-shrink-0">
+								<Image
+									className="h-full m-auto object-cover md:w-48"
+									src="/assets/images/telebirr.png"
+									alt="TeleBirr Logo"
+									width={192}
+									height={192}
+								/>
+							</div>
 						</div>
 					</Card>
 				</div>
 
 				{/* productManagement */}
 				<div ref={productManagementRef} className="mb-16">
+					<h2 className="text-3xl font-extrabold text-center mb-8">
+						{t("productManagement.title")}
+					</h2>
+					<Card className="shadow-lg">
+						<CardContent className="pt-6">
+							<div className="space-y-4">
+								<div>
+									<Label htmlFor="studentId">
+										{t("productManagement.studentIdLabel")}
+									</Label>
+									<div className="flex mt-1">
+										<Input
+											id="studentId"
+											value={studentId}
+											onChange={(e) => setStudentId(e.target.value)}
+											placeholder={t("productManagement.studentIdPlaceholder")}
+											className="flex-grow"
+											required
+										/>
+										<Button
+											onClick={checkStudent}
+											className="ml-2 bg-[#881337] hover:bg-[#6e0f2d] text-white">
+											{t("productManagement.checkStudentButton")}
+										</Button>
+									</div>
+									{selectedStudent && (
+										<div className="mt-2 p-2 bg-green-100 text-green-800 rounded-md">
+											<p className="font-semibold">
+												{t("productManagement.studentFound")}{" "}
+												{selectedStudent.fullName}
+											</p>
+										</div>
+									)}
+									{!selectedStudent && studentId && (
+										<div className="mt-2 p-2 bg-red-100 text-red-800 rounded-md">
+											<p className="font-semibold">
+												{t("productManagement.studentNotFound")}
+											</p>
+										</div>
+									)}
+								</div>
+								{selectedStudent && (
+									<>
+										<div>
+											<Label htmlFor="item">
+												{t("productManagement.selectItemLabel")}
+											</Label>
+											<Select
+												value={selectedItem}
+												onValueChange={handleItemChange}>
+												<SelectTrigger id="item">
+													<SelectValue placeholder="Select Item" />
+												</SelectTrigger>
+												<SelectContent>
+													{availableItems.map((item) => (
+														<SelectItem key={item.id} value={item.id}>
+															{item.name} - ${item.price.toFixed(2)}
+														</SelectItem>
+													))}
+												</SelectContent>
+											</Select>
+										</div>
+										<div>
+											<Label htmlFor="quantity">
+												{t("productManagement.quantityLabel")}
+											</Label>
+											<Input
+												id="quantity"
+												type="number"
+												min="1"
+												value={quantity}
+												onChange={(e) => handleQuantityChange(e.target.value)}
+											/>
+										</div>
+										{totalPrice > 0 && (
+											<div className="p-4 bg-gray-50 rounded-md">
+												<Label>{t("productManagement.totalPrice")}</Label>
+												<div className="text-2xl font-bold text-[#881337]">
+													${totalPrice.toFixed(2)}
+												</div>
+											</div>
+										)}
+										<Button
+											onClick={createProduct}
+											className="w-full bg-[#881337] hover:bg-[#6e0f2d] text-white">
+											{t("productManagement.createProductButton")}
+										</Button>
+									</>
+								)}
+							</div>
+						</CardContent>
+					</Card>
+				</div>
+
+				{/* <div ref={productManagementRef} className="mb-16">
 					<h2 className="text-3xl font-extrabold text-center mb-8">
 						{t("productManagement.title")}
 					</h2>
@@ -478,7 +624,7 @@ export default function HomePage() {
 							</div>
 						</CardContent>
 					</Card>
-				</div>
+				</div> */}
 
 				{/* Feature Title */}
 				<div className="relative mb-16">
