@@ -46,7 +46,7 @@ export const DateRangePicker = ({
 								key: "selection",
 							},
 						]}
-						onChange={handleSelect}
+						// onChange={handleSelect}
 						minDate={new Date()}
 					/>
 				</div>
