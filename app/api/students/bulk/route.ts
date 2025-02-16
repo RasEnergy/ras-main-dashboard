@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 
 		for (const [index, student] of students.entries()) {
 			try {
-				if (!student.studentId || !student.firstName || !student.lastName) {
+				if (!student.studentId) {
 					throw new Error(
 						"Missing required fields: studentId, firstName, or lastName"
 					);

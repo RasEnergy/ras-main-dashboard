@@ -10,17 +10,18 @@ export const translations = {
 			learnMore: "Learn more",
 		},
 		howToUse: {
-			title: "How can I use your service?",
+			title: "How Can I Get My Children's Digital ID?",
 			description: "It's very simple! Follow these easy steps to get started:",
 			steps: {
-				title: "Steps to follow:",
+				title: "Steps to Follow:",
 				step1:
-					"First, enter the student’s ID number in the 'Register Here' form below.",
+					"First, enter the student's ID number in the 'Register Here' form below.",
 				step2:
-					"After selecting your desired item, you will receive a Telebirr payment number.",
-				step3: "Use the payment number to complete your payment via Telebirr.",
+					"After selecting the desired item, you will receive a Telebirr payment number for payment processing.",
+				step3:
+					"Go to Telebirr and complete the payment using the provided payment number. (You can refer to the image below.)",
 				step4:
-					"Once the payment is completed, we will deliver within two days or send it through the school administration.",
+					"Once the payment is completed, we will deliver it within two days or send it through the school administration.",
 			},
 		},
 		features: {
@@ -65,19 +66,19 @@ export const translations = {
 		productManagement: {
 			title: "Register Here",
 			studentIdLabel: "Student ID",
-			checkStudentButton: "Check Student",
-			howToGetProduct: "How can I get your service?",
-			howToGetProductDescription:
-				"It's very simple! First, enter the student’s ID number in the 'Register Here' form below. After receiving the reference number for payment, use it to complete the payment and receive your order.",
-			studentFound: "Student found:",
-			selectItemLabel: "Select Item",
+			studentIdPlaceholder: "Enter Student ID Number",
+			checkStudentButton: "Verify Student",
+			selectItemLabel: "Select the Item to Purchase",
 			quantityLabel: "Quantity",
+			createProductButton: "Create Product and Receive Telebirr Payment",
 			totalPrice: "Total Price",
-			createProductButton: "Create Product",
+			studentFound: "Student found. Items have been loaded.",
 			studentNotFound: "Student not found.",
-			errorCheckingStudent: "Error checking student. Please try again.",
-			productCreated: "Product created successfully",
-			errorCreatingProduct: "Error creating product. Please try again.",
+			errorCheckingStudent:
+				"An error occurred while verifying the student. Please try again.",
+			productCreated: "Product successfully created.",
+			errorCreatingProduct: "Failed to create product. Please try again.",
+			emptyStudentId: "Please enter the student ID number.",
 		},
 		services: {
 			title: "Our Services",
@@ -144,7 +145,8 @@ export const translations = {
 			signup: "Sign Up",
 		},
 		footer: {
-			copyright: "© 2023 School Management System. All rights reserved.",
+			copyright:
+				"© 2025 Rasynergy School Management System. All rights reserved.",
 		},
 		modal: {
 			title: "Product Created Successfully",
@@ -159,27 +161,28 @@ export const translations = {
 			title: "የልጆችዎ የደብተርና የምሳቃ ቦርሳ ከት/ቤቱ ሎጎ ጋር እንዲሁም ስሙን ጽፈን አዘጋጅተናል!",
 			subtitle:
 				"እኛ Ras Synergy Student ID Card Solution እንባላለን። ትህዛዝ እንቀበላለን በቴሌብር የመክፈያ ኮድዎን በመላክ በ2ቀን ውስጥ ያሉበት እናደርሳለን!!",
-			cta: "አገልግሎታችሁን እንዴት ላግኝ?",
+			cta: "Digital Id እንዴት ላግኝ?",
 			learnMore: "ተጨማሪ ይወቁ",
 		},
 		howToUse: {
-			title: "አገልግሎታችንን እንዴት መጠቀም እችላለሁ?",
+			title: "ለልጆቼ Digital Id እንዴት ማግኘት እችላለሁ?",
 			description: "በጣም ቀላል ነው! ለመጀመር እነዚህን ቀላል ደረጃዎች ይከተሉ፡",
 			steps: {
 				title: "መከተል ያለብዎት ደረጃዎች፡",
 				step1: "በመጀመሪያ፣ የተማሪውን መታወቂያ ቁጥር ከታች ባለው 'እዚህ ይመዝገቡ' ቅጽ ላይ ያስገቡ።",
-				step2: "የፈለጉትን እቃ ከመረጡ በኋላ ለክፍያ የሚያገለግል የቴሌብር የምክፈያ ቁጥር ይቀበላሉ።",
-				step3: "ወደ ቴሌብር ሂደው የክፍያ ቁጥሩን በመጠቀም ክፍያውን ይፈጽሙ።",
+				step2: "ፈለጉትን እቃ ከመረጡ በኋላ ለክፍያ የሚያገለግል የቴሌብር የምክፈያ ቁጥር ይቀበላሉ።",
+				step3:
+					"ወደ ቴሌብር ሂደው የክፍያ ቁጥሩን በመጠቀም ክፍያውን ይፈጽሙ። (ከስር ያለውን ፎቶ መመልከት ይችላሉ)",
 				step4:
 					"ክፍያው ከተፈጸመ በኋላ፣ በሁለት ቀናት ውስጥ እናደርሳለን ወይም በትምህርት ቤቱ አማካኝነት እንልካለን።",
 			},
 		},
 		features: {
-			title: "የእኛ ሁሉን አቀፍ አገልግሎቶች",
+			title: "አገልግሎቶቻችን",
 			orderButton: "አሁን ይዘዙ",
 			studentManagement: {
 				title: "የተማሪዎች ዲጂታል መታወቂያ ካርድ",
-				description: "የተማሪ መረጃን በብቃት ያስተዳድሩ።",
+				description: "የተማሪዎችን ውሎ መቆጣጠር ሚችሉበት።",
 				content:
 					"የተማሪዎች ዲጅታል መታወቂያዎች ለቤተሰብ የመውጫና የመግቢያ ሰአቶችን ለወላጅ ከማሳወቅም በላይ ከሰርቪስ ባስ መግባታቸውን እንዲሁም በሰላም መድረሳቸውን በSMS የማሳወቅቅ አቅም ከመኖሩም በላይ ከትምህርት ቤት ቅጥር ውጪ ያሉትን እንቅስቃሴዎች የGPS መግለጫዎችን በግቢ ውስጥ መጽሃፍት ቤት የስፖርት ቦታዎችን እና እንደ አስፈጊነቱ በታዘዘበት ቦታ ሁሉ መረጃዎችን የመስጠት ብቃቱ ከፍተኛ ነው።",
 				cta: "ተጨማሪ ይወቁ",
@@ -193,14 +196,14 @@ export const translations = {
 			},
 			orderManagement: {
 				title: "የትምህርት ቤት ቦርሳዎችና እና ዩኒፎርሞች",
-				description: "ትዕዛዞችን በብቃት ይከታተሉ እና ያስተዳድሩ።",
+				description: "የትምህርት መገልገያዎችን በተሟላ ሁኔታ ያቀርባል",
 				content:
 					"የተማሪዎች የቤተሰብን አቅም በመጠነና እኩልነትን ባሰፈነ መርሃ ግብራችን ውስጥ ከምናቀርባቸው ግበቶች ዩኒፎርም የእስፖርት ልብሶች ቦርሳ የምሳቃ መያዣን ጨምሮ እንዲሁም ጠንካራ ጫማዎችን  ከዩኒፎርማቸው ጋር ተመሳሳይ የሆኑ የተማሪው ስምና የትምህርት ቤቱን ሎጎ ያካተተ ከማዘጋጀታችንም በላይ በተማሪው በመለያ ቁጥር ሲሸመቱ የ30% ቅናሽ ማድረጋችንን ስናበስር በደስታ ነው።",
 				cta: "ተጨማሪ ይወቁ",
 			},
 			schoolManagement: {
-				title: "የትምህርት ቤት አስተዳደር ስርዓት",
-				description: "የትምህርት ቤትዎን አስተዳደር አብዮታዊ ይቀይሩ።",
+				title: "የትምህርት ቤት አስተዳደር ስርዓት (School Management System)",
+				description: "የትምህርት ቤትዎን አስተዳደር በዲጂታል ይቀይሩ።",
 				content:
 					"በዘመናዊ የትምህርት ቤት አስተዳደር ስርዓታችን አሠራርዎን ያቃልሉ፣ ግንኙነትን ያሻሽሉ እና ምርታማነትን ያሳድጉ። ከተማሪዎች መገኘት መከታተል እስከ አፈጻጸም ትንተና ድረስ፣ ሁሉንም ተሸፍነናል! ስርዓታችን ሁሉን አቀፍ መፍትሄ ለመስጠት ከሌሎች ሞዱሎች ጋር በቀላሉ ይዋሃዳል።",
 				cta: "ተጨማሪ ይግለጡ",
@@ -215,20 +218,19 @@ export const translations = {
 		},
 		productManagement: {
 			title: "እዚህ ይመዝገቡ",
-			studentIdLabel: "የተማሪው ID",
-			howToGetProduct: "የምታቀርቡትን አገልግሎት እንዴት ላግኝ?",
-			howToGetProductDescription:
-				"በጣም ቀላል ነው! በቅድሚያ የተማሪውን መታወቂያ ቁጥር ከታች በሚገኘው እዚህ ይመዝገቡ ቅጽ ላይ በመሙላት የሚያገኙትን የመክፈያ ቁጥር Reference number በመያዝ ከታች በምስሉ ላይ በምትመለከቱት ወደ ቴሌብር በመሄድ ያስገባሉ : ከከፈሉም በኋላ እኛ በሁለት ቀናት ውስጥ ያሉበት ድረስ እናደርሳለን ወይም በትምርት ቤቶ አማካኝነት እንልካለን::",
+			studentIdLabel: "የተማሪ መታወቂያ",
+			studentIdPlaceholder: "የተማሪ መታወቂያ ቁጥር ያስገቡ",
 			checkStudentButton: "ተማሪን ያረጋግጡ",
-			studentFound: "ተማሪ ተገኝቷል፡",
 			selectItemLabel: "የሚገዙትን እቃ ይምረጡ",
 			quantityLabel: "ብዛት",
+			createProductButton: "ምርት ይፍጠሩና የቴሌብር መክፈያውን ይቀበሉ",
 			totalPrice: "ጠቅላላ ዋጋ",
-			createProductButton: "ምርት ይፍጠሩ",
+			studentFound: "ተማሪ ተገኝቷል። እቃዎች ተጭነዋል።",
 			studentNotFound: "ተማሪ አልተገኘም።",
 			errorCheckingStudent: "ተማሪን በማረጋገጥ ላይ ስህተት ተከስቷል። እባክዎ እንደገና ይሞክሩ።",
-			productCreated: "ምርት በተሳካ ሁኔታ ተፈጥሯል",
-			errorCreatingProduct: "ምርት በመፍጠር ላይ ስህተት ተከስቷል። እባክዎ እንደገና ይሞክሩ።",
+			productCreated: "ምርት በተሳካ ሁኔታ ተፈጥሯል።",
+			errorCreatingProduct: "ምርት መፍጠር አልተሳካም። እባክዎ እንደገና ይሞክሩ።",
+			emptyStudentId: "እባክዎ የተማሪ መታወቂያ ቁጥር ያስገቡ።",
 		},
 		services: {
 			title: "የእኛ አገልግሎቶች",
@@ -254,8 +256,8 @@ export const translations = {
 				cta: "ተጨማሪ ይግለጡ",
 			},
 			studentInsurance: {
-				title: "የተማሪ መድን ስርዓት",
-				description: "ተማሪዎችዎን ይጠብቁ፣ የወደፊት ህይወታቸውን ያረጋግጡ።",
+				title: "የተማሪ የጤና መድን ስርዓት",
+				description: "ተማሪ ልጅዎን ይጠብቁ፣ የወደፊት ህይወታቸውን ያረጋግጡ።",
 				content:
 					"በሁሉን አቀፍ የመድን ስርዓታችን ለተማሪዎች እና ለወላጆች የአእምሮ ሰላምን ይስጡ። የመድን ፖሊሲዎችን፣ ጥያቄዎችን እና ጥቅማጥቅሞችን በቀላሉ ያስተዳድሩ፣ ተማሪዎችዎ በትምህርት ቤት ውስጥም ሆነ ውጭ መጠበቃቸውን ያረጋግጡ።",
 				cta: "ሽፋኑን ያስሱ",
@@ -292,7 +294,7 @@ export const translations = {
 			signup: "ተመዝገብ",
 		},
 		footer: {
-			copyright: "© 2024 ራሲነርጂ አስተዳደር ሥርዓት። መብቱ በህግ የተጠበቀ ነው።",
+			copyright: "© 2025 ራሲነርጂ አስተዳደር ሥርዓት። መብቱ በህግ የተጠበቀ ነው።",
 		},
 		modal: {
 			title: "የቴሌብር የመክፈያ ቁጥር በተሳካ ሁኔታ ተፈጥሯል",
