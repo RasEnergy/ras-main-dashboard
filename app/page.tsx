@@ -120,7 +120,9 @@ export default function HomePage() {
 			if (data) {
 				setSelectedStudent({
 					...data,
-					fullName: `${data.firstName} ${data.lastName}`,
+					fullName: data.lastName
+						? `${data.firstName} ${data.lastName}`
+						: data.firstName,
 				});
 				const schoolId = data.studentId.substring(0, 4);
 				const itemsResponse = await fetch(`/api/items?schoolId=${schoolId}`);
