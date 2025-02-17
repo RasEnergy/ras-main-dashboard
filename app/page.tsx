@@ -324,11 +324,11 @@ export default function HomePage() {
 							<Link href="/login" passHref>
 								<Button variant="outline">{t("nav.login")}</Button>
 							</Link>
-							<Link href="/signup" passHref>
+							{/* <Link href="/signup" passHref>
 								<Button className="bg-[#881337] hover:bg-[#6e0f2d] text-white">
 									{t("nav.signup")}
 								</Button>
-							</Link>
+							</Link> */}
 						</nav>
 					</div>
 					<Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -358,13 +358,13 @@ export default function HomePage() {
 										{t("nav.login")}
 									</Button>
 								</Link>
-								<Link href="/signup" passHref>
+								{/* <Link href="/signup" passHref>
 									<Button
 										className="w-full bg-[#881337] hover:bg-[#6e0f2d] text-white"
 										onClick={() => setIsOpen(false)}>
 										{t("nav.signup")}
 									</Button>
-								</Link>
+								</Link> */}
 							</nav>
 						</SheetContent>
 					</Sheet>
