@@ -477,13 +477,13 @@ export default function HomePage() {
 											</p>
 										</div>
 									)}
-									{!selectedStudent && studentId && (
+									{/* {!selectedStudent && studentId && (
 										<div className="mt-2 p-2 bg-red-100 text-red-800 rounded-md">
 											<p className="font-semibold">
 												{t("productManagement.studentNotFound")}
 											</p>
 										</div>
-									)}
+									)} */}
 								</div>
 								{selectedStudent && (
 									<>
