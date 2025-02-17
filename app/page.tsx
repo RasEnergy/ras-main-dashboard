@@ -500,7 +500,7 @@ export default function HomePage() {
 												<SelectContent>
 													{availableItems.map((item) => (
 														<SelectItem key={item.id} value={item.id}>
-															{item.name} - ${item.price.toFixed(2)}
+															{item.name} - ETB {item.price.toFixed(2)}
 														</SelectItem>
 													))}
 												</SelectContent>
@@ -522,7 +522,7 @@ export default function HomePage() {
 											<div className="p-4 bg-gray-50 rounded-md">
 												<Label>{t("productManagement.totalPrice")}</Label>
 												<div className="text-2xl font-bold text-[#881337]">
-													${totalPrice.toFixed(2)}
+													ETB {totalPrice.toFixed(2)}
 												</div>
 											</div>
 										)}
