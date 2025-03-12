@@ -25,41 +25,36 @@ export const translations = {
 			},
 		},
 		features: {
-			title: "Our Comprehensive Services",
+			title: "Our Services",
 			orderButton: "Order Now",
 			studentManagement: {
-				title: "Student Management",
-				description: "Efficiently manage student information.",
-				content:
-					"Easily add, update, and search for student records. Our system provides a comprehensive view of each student's academic journey, including grades, attendance, and extracurricular activities.",
+				title: "Digital Student ID Cards",
+				description: "Easily manage student attendance and activities.",
+				content: "Digital student IDs allow you to track student entry and exit times, notify parents via SMS when students board or alight from service buses, and monitor their safety. Additionally, the system provides GPS tracking for activities outside the school premises, such as library visits, sports areas, and other designated locations, ensuring comprehensive oversight.",
 				cta: "Learn More",
 			},
 			productCatalog: {
-				title: "Product Catalog",
-				description: "Maintain a comprehensive product catalog.",
-				content:
-					"Add, edit, and delete products with ease. Our intuitive interface allows you to manage your school's inventory, from textbooks to uniforms, ensuring you always have the right supplies on hand.",
+				title: "School Sports Uniforms",
+				description: "We offer high-quality sports uniforms tailored to meet the needs of students and their families.",
+				content: "Easily add, edit, or remove products. Our user-friendly interface allows you to manage school supplies, from books to uniforms, ensuring you always have the right inventory in stock.",
 				cta: "Learn More",
 			},
 			orderManagement: {
-				title: "Order Management",
-				description: "Track and manage orders effectively.",
-				content:
-					"View order history, manage order status, and generate reports. Our order management system streamlines the process of fulfilling student and faculty requests, reducing wait times and improving satisfaction.",
+				title: "School Bags and Uniforms",
+				description: "We provide a complete range of educational supplies.",
+				content: "Our offerings include school uniforms, sports attire, bags, lunch boxes, and durable shoes, all designed to match the school's logo and student identity. Additionally, students enjoy a 30% discount when purchasing with their student ID.",
 				cta: "Learn More",
 			},
 			schoolManagement: {
 				title: "School Management System",
-				description: "Revolutionize your school's administration.",
-				content:
-					"Streamline operations, enhance communication, and boost productivity with our cutting-edge school management system. From attendance tracking to performance analytics, we've got you covered! Our system integrates seamlessly with other modules to provide a comprehensive solution for your educational institution.",
-				cta: "Discover More",
+				description: "Transform your school administration with digital solutions.",
+				content: "Streamline operations, improve communication, and enhance productivity with our modern school management system. From attendance tracking to performance analytics, we’ve got you covered! Our system integrates seamlessly with other modules to provide a comprehensive solution.",
+				cta: "Learn More",
 			},
 			studentInsurance: {
 				title: "Student Health Insurance System",
-				description: "Protect your students, secure their future.",
-				content:
-					"Offer peace of mind to students and parents with our comprehensive insurance system. Easily manage policies, claims, and benefits, ensuring your students are protected both on and off campus. Our system provides real-time updates and easy-to-understand policy information for all stakeholders.",
+				description: "Protect your students and secure their future.",
+				content: "Our comprehensive insurance system provides peace of mind for students and parents. Easily manage insurance policies, claims, and benefits, ensuring your students are covered both inside and outside the school. The system offers real-time updates and easy-to-understand policy information for all stakeholders.",
 				cta: "Explore Coverage",
 			},
 		},
