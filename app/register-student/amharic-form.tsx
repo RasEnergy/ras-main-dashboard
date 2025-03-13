@@ -1,248 +1,228 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
-import type { StudentFormData } from "../../lib/actions";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Save, UserPlus } from "lucide-react";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import type { StudentFormData } from "../../lib/actions"
+import { Save, UserPlus } from "lucide-react"
 
 interface AmharicFormProps {
-	formData: StudentFormData;
-	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	handleSelectChange: (name: string) => (value: string) => void;
-	isSubmitting: boolean;
-	isEditing?: boolean;
+  formData: StudentFormData
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleSelectChange: (name: string) => (value: string) => void
+  isSubmitting: boolean
+  isEditing?: boolean
 }
 
 export function AmharicForm({
-	formData,
-	handleInputChange,
-	handleSelectChange,
-	isSubmitting,
-	isEditing = false,
+  formData,
+  handleInputChange,
+  handleSelectChange,
+  isSubmitting,
+  isEditing = false,
 }: AmharicFormProps) {
-	return (
-		<Tabs defaultValue="personal" className="w-full">
-			<TabsList className="grid w-full grid-cols-3 mb-6">
-				<TabsTrigger value="personal">የግል መረጃ</TabsTrigger>
-				<TabsTrigger value="contact">የመገኛ መረጃ</TabsTrigger>
-				<TabsTrigger value="academic">የትምህርት መረጃ</TabsTrigger>
-			</TabsList>
+  return (
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <h3 className="text-lg font-medium text-gray-900">የግል መረጃ</h3>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="firstName" className="text-sm font-medium">
+              ስም *
+            </Label>
+            <Input
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+              className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+              required
+            />
+          </div>
 
-			<TabsContent value="personal" className="space-y-4">
-				<div className="grid grid-cols-2 gap-4">
-					<div className="space-y-2">
-						<Label htmlFor="firstName" className="text-sm font-medium">
-							ስም *
-						</Label>
-						<Input
-							id="firstName"
-							name="firstName"
-							value={formData.firstName}
-							onChange={handleInputChange}
-							className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
-							required
-						/>
-					</div>
+          <div className="space-y-2">
+            <Label htmlFor="lastName" className="text-sm font-medium">
+              የአባት ስም *
+            </Label>
+            <Input
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+              className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+              required
+            />
+          </div>
+        </div>
 
-					<div className="space-y-2">
-						<Label htmlFor="lastName" className="text-sm font-medium">
-							የአባት ስም *
-						</Label>
-						<Input
-							id="lastName"
-							name="lastName"
-							value={formData.lastName}
-							onChange={handleInputChange}
-							className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
-							required
-						/>
-					</div>
-				</div>
+        <div className="space-y-2">
+          <Label htmlFor="middleName" className="text-sm font-medium">
+            የአያት ስም
+          </Label>
+          <Input
+            id="middleName"
+            name="middleName"
+            value={formData.middleName || ""}
+            onChange={handleInputChange}
+            className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+          />
+        </div>
 
-				<div className="space-y-2">
-					<Label htmlFor="middleName" className="text-sm font-medium">
-						የአያት ስም
-					</Label>
-					<Input
-						id="middleName"
-						name="middleName"
-						value={formData.middleName || ""}
-						onChange={handleInputChange}
-						className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
-					/>
-				</div>
+        <div className="space-y-2">
+          <Label htmlFor="studentId" className="text-sm font-medium">
+            የተማሪ መታወቂያ ቁጥር *
+          </Label>
+          <Input
+            id="studentId"
+            name="studentId"
+            value={formData.studentId}
+            onChange={handleInputChange}
+            className={`rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50 ${isEditing ? "bg-gray-100" : ""}`}
+            required
+            disabled={isEditing}
+          />
+          {isEditing && <p className="text-xs text-gray-500 mt-1 italic">የተማሪ መታወቂያ ቁጥር መቀየር አይቻልም</p>}
+        </div>
 
-				<div className="space-y-2">
-					<Label htmlFor="studentId" className="text-sm font-medium">
-						የተማሪ መታወቂያ ቁጥር *
-					</Label>
-					<Input
-						id="studentId"
-						name="studentId"
-						value={formData.studentId}
-						onChange={handleInputChange}
-						className={`rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50 ${
-							isEditing ? "bg-gray-100" : ""
-						}`}
-						required
-						disabled={isEditing}
-					/>
-					{isEditing && (
-						<p className="text-xs text-gray-500 mt-1 italic">
-							የተማሪ መታወቂያ ቁጥር መቀየር አይቻልም
-						</p>
-					)}
-				</div>
+        <div className="space-y-2">
+          <Label htmlFor="gender" className="text-sm font-medium">
+            ጾታ
+          </Label>
+          <Select value={formData.gender || ""} onValueChange={handleSelectChange("gender")}>
+            <SelectTrigger
+              id="gender"
+              className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+            >
+              <SelectValue placeholder="ጾታ ይምረጡ" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Male">ወንድ</SelectItem>
+              <SelectItem value="Female">ሴት</SelectItem>
+              <SelectItem value="Other">ሌላ</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
 
-				<div className="space-y-2">
-					<Label htmlFor="gender" className="text-sm font-medium">
-						ጾታ
-					</Label>
-					<Select
-						value={formData.gender || ""}
-						onValueChange={handleSelectChange("gender")}>
-						<SelectTrigger
-							id="gender"
-							className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50">
-							<SelectValue placeholder="ጾታ ይምረጡ" />
-						</SelectTrigger>
-						<SelectContent>
-							<SelectItem value="Male">ወንድ</SelectItem>
-							<SelectItem value="Female">ሴት</SelectItem>
-							<SelectItem value="Other">ሌላ</SelectItem>
-						</SelectContent>
-					</Select>
-				</div>
-			</TabsContent>
+      <div className="space-y-4">
+        <h3 className="text-lg font-medium text-gray-900">የመገኛ መረጃ</h3>
+        <div className="space-y-2">
+          <Label htmlFor="phone" className="text-sm font-medium">
+            የተማሪ ስልክ ቁጥር
+          </Label>
+          <Input
+            id="phone"
+            name="phone"
+            value={formData.phone || ""}
+            onChange={handleInputChange}
+            type="tel"
+            className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+          />
+        </div>
 
-			<TabsContent value="contact" className="space-y-4">
-				<div className="space-y-2">
-					<Label htmlFor="phone" className="text-sm font-medium">
-						የተማሪ ስልክ ቁጥር
-					</Label>
-					<Input
-						id="phone"
-						name="phone"
-						value={formData.phone || ""}
-						onChange={handleInputChange}
-						type="tel"
-						className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
-					/>
-				</div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="father_phone" className="text-sm font-medium">
+              የአባት ስልክ ቁጥር
+            </Label>
+            <Input
+              id="father_phone"
+              name="father_phone"
+              value={formData.father_phone || ""}
+              onChange={handleInputChange}
+              type="tel"
+              className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+            />
+          </div>
 
-				<div className="grid grid-cols-2 gap-4">
-					<div className="space-y-2">
-						<Label htmlFor="father_phone" className="text-sm font-medium">
-							የአባት ስልክ ቁጥር
-						</Label>
-						<Input
-							id="father_phone"
-							name="father_phone"
-							value={formData.father_phone || ""}
-							onChange={handleInputChange}
-							type="tel"
-							className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
-						/>
-					</div>
+          <div className="space-y-2">
+            <Label htmlFor="mother_phone" className="text-sm font-medium">
+              የእናት ስልክ ቁጥር
+            </Label>
+            <Input
+              id="mother_phone"
+              name="mother_phone"
+              value={formData.mother_phone || ""}
+              onChange={handleInputChange}
+              type="tel"
+              className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+            />
+          </div>
+        </div>
+      </div>
 
-					<div className="space-y-2">
-						<Label htmlFor="mother_phone" className="text-sm font-medium">
-							የእናት ስልክ ቁጥር
-						</Label>
-						<Input
-							id="mother_phone"
-							name="mother_phone"
-							value={formData.mother_phone || ""}
-							onChange={handleInputChange}
-							type="tel"
-							className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
-						/>
-					</div>
-				</div>
-			</TabsContent>
+      <div className="space-y-4">
+        <h3 className="text-lg font-medium text-gray-900">የትምህርት መረጃ</h3>
+        <div className="space-y-2">
+          <Label htmlFor="branch" className="text-sm font-medium">
+            ቅርንጫፍ *
+          </Label>
+          <Input
+            id="branch"
+            name="branch"
+            value={formData.branch}
+            onChange={handleInputChange}
+            className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+            required
+          />
+        </div>
 
-			<TabsContent value="academic" className="space-y-4">
-				<div className="space-y-2">
-					<Label htmlFor="branch" className="text-sm font-medium">
-						ቅርንጫፍ *
-					</Label>
-					<Input
-						id="branch"
-						name="branch"
-						value={formData.branch}
-						onChange={handleInputChange}
-						className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
-						required
-					/>
-				</div>
+        <div className="space-y-2">
+          <Label htmlFor="grade" className="text-sm font-medium">
+            ክፍል
+          </Label>
+          <Input
+            id="grade"
+            name="grade"
+            value={formData.grade || ""}
+            onChange={handleInputChange}
+            className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+          />
+        </div>
 
-				<div className="space-y-2">
-					<Label htmlFor="grade" className="text-sm font-medium">
-						ክፍል
-					</Label>
-					<Input
-						id="grade"
-						name="grade"
-						value={formData.grade || ""}
-						onChange={handleInputChange}
-						className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
-					/>
-				</div>
+        <div className="space-y-2">
+          <Label htmlFor="status" className="text-sm font-medium">
+            ሁኔታ
+          </Label>
+          <Select value={formData.status || "Active"} onValueChange={handleSelectChange("status")}>
+            <SelectTrigger
+              id="status"
+              className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+            >
+              <SelectValue placeholder="ሁኔታ ይምረጡ" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Active">ንቁ</SelectItem>
+              <SelectItem value="Inactive">ንቁ ያልሆነ</SelectItem>
+              <SelectItem value="Pending">በመጠባበቅ ላይ</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
 
-				<div className="space-y-2">
-					<Label htmlFor="status" className="text-sm font-medium">
-						ሁኔታ
-					</Label>
-					<Select
-						value={formData.status || "Active"}
-						onValueChange={handleSelectChange("status")}>
-						<SelectTrigger
-							id="status"
-							className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50">
-							<SelectValue placeholder="ሁኔታ ይምረጡ" />
-						</SelectTrigger>
-						<SelectContent>
-							<SelectItem value="Active">ንቁ</SelectItem>
-							<SelectItem value="Inactive">ንቁ ያልሆነ</SelectItem>
-							<SelectItem value="Pending">በመጠባበቅ ላይ</SelectItem>
-						</SelectContent>
-					</Select>
-				</div>
-			</TabsContent>
-
-			<div className="mt-8">
-				<Button
-					type="submit"
-					className="w-full bg-[#881337] hover:bg-[#6e0f2d] text-white py-2 rounded-md shadow-md transition-all duration-200 hover:shadow-lg transform hover:-translate-y-1"
-					disabled={isSubmitting}>
-					{isSubmitting ? (
-						<div className="flex items-center">
-							<div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-							በመስራት ላይ...
-						</div>
-					) : (
-						<div className="flex items-center justify-center">
-							{isEditing ? (
-								<Save className="mr-2 h-4 w-4" />
-							) : (
-								<UserPlus className="mr-2 h-4 w-4" />
-							)}
-							{isEditing ? "ተማሪን ያዘምኑ" : "ተማሪን መዝግብ"}
-						</div>
-					)}
-				</Button>
-			</div>
-		</Tabs>
-	);
+      <div className="mt-8">
+        <Button
+          type="submit"
+          className="w-full bg-[#881337] hover:bg-[#6e0f2d] text-white py-2 rounded-md shadow-md transition-all duration-200 hover:shadow-lg transform hover:-translate-y-1"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <div className="flex items-center">
+              <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+              በመስራት ላይ...
+            </div>
+          ) : (
+            <div className="flex items-center justify-center">
+              {isEditing ? <Save className="mr-2 h-4 w-4" /> : <UserPlus className="mr-2 h-4 w-4" />}
+              {isEditing ? "ተማሪን ያዘምኑ" : "ተማሪን መዝግብ"}
+            </div>
+          )}
+        </Button>
+      </div>
+    </div>
+  )
 }
+
