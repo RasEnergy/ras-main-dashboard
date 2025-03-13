@@ -41,7 +41,6 @@ import {
 import { AmharicForm } from "../amharic-form";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function EditStudentPage({
 	params,
@@ -72,7 +71,6 @@ export default function EditStudentPage({
 		errors?: any[];
 	} | null>(null);
 	const [isEditing, setIsEditing] = useState(false);
-	const [activeTab, setActiveTab] = useState("personal");
 
 	const t = (key: string) => {
 		return key.split(".").reduce((o, i) => o[i], translations[lang] as any);
@@ -120,11 +118,11 @@ export default function EditStudentPage({
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
-		setFormData((prev) => ({ ...prev, [name]: value }));
+		setFormData((prev: any) => ({ ...prev, [name]: value }));
 	};
 
 	const handleSelectChange = (name: string) => (value: string) => {
-		setFormData((prev) => ({ ...prev, [name]: value }));
+		setFormData((prev: any) => ({ ...prev, [name]: value }));
 	};
 
 	const handleSubmit = async (e: React.FormEvent) => {
@@ -250,7 +248,7 @@ export default function EditStudentPage({
 									<Button
 										variant="outline"
 										size="sm"
-										className="text-white border-white hover:bg-white/20"
+										className="text-red-900 border-white hover:bg-white/20"
 										onClick={resetForm}>
 										<PlusCircle className="mr-1 h-4 w-4" />
 										{lang === "en" ? "New Form" : "አዲስ ቅጽ"}
@@ -312,21 +310,11 @@ export default function EditStudentPage({
 
 							<form onSubmit={handleSubmit}>
 								{lang === "en" ? (
-									<Tabs
-										defaultValue="personal"
-										className="w-full"
-										onValueChange={setActiveTab}>
-										<TabsList className="grid w-full grid-cols-3 mb-6">
-											<TabsTrigger value="personal">
+									<div className="space-y-6">
+										<div className="space-y-4">
+											<h3 className="text-lg font-medium text-gray-900">
 												Personal Information
-											</TabsTrigger>
-											<TabsTrigger value="contact">Contact Details</TabsTrigger>
-											<TabsTrigger value="academic">
-												Academic Information
-											</TabsTrigger>
-										</TabsList>
-
-										<TabsContent value="personal" className="space-y-4">
+											</h3>
 											<div className="grid grid-cols-2 gap-4">
 												<div className="space-y-2">
 													<Label
@@ -415,13 +403,15 @@ export default function EditStudentPage({
 													<SelectContent>
 														<SelectItem value="Male">Male</SelectItem>
 														<SelectItem value="Female">Female</SelectItem>
-														<SelectItem value="Other">Other</SelectItem>
 													</SelectContent>
 												</Select>
 											</div>
-										</TabsContent>
+										</div>
 
-										<TabsContent value="contact" className="space-y-4">
+										<div className="space-y-4">
+											<h3 className="text-lg font-medium text-gray-900">
+												Contact Details
+											</h3>
 											<div className="space-y-2">
 												<Label htmlFor="phone" className="text-sm font-medium">
 													Student Phone
@@ -469,9 +459,12 @@ export default function EditStudentPage({
 													/>
 												</div>
 											</div>
-										</TabsContent>
+										</div>
 
-										<TabsContent value="academic" className="space-y-4">
+										<div className="space-y-4">
+											<h3 className="text-lg font-medium text-gray-900">
+												Academic Information
+											</h3>
 											<div className="space-y-2">
 												<Label htmlFor="branch" className="text-sm font-medium">
 													Branch *
@@ -518,8 +511,37 @@ export default function EditStudentPage({
 													</SelectContent>
 												</Select>
 											</div>
-										</TabsContent>
-									</Tabs>
+										</div>
+
+										<div className="mt-8">
+											<Button
+												type="submit"
+												className="w-full bg-[#881337] hover:bg-[#6e0f2d] text-white py-2 rounded-md shadow-md transition-all duration-200 hover:shadow-lg transform hover:-translate-y-1"
+												disabled={isSubmitting}>
+												{isSubmitting ? (
+													<div className="flex items-center">
+														<div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+														{lang === "en" ? "Processing..." : "በመስራት ላይ..."}
+													</div>
+												) : (
+													<div className="flex items-center justify-center">
+														{isEditing ? (
+															<Save className="mr-2 h-4 w-4" />
+														) : (
+															<UserPlus className="mr-2 h-4 w-4" />
+														)}
+														{isEditing
+															? lang === "en"
+																? "Update Student"
+																: "ተማሪን ያዘምኑ"
+															: lang === "en"
+															? "Register Student"
+															: "ተማሪን መዝግብ"}
+													</div>
+												)}
+											</Button>
+										</div>
+									</div>
 								) : (
 									<AmharicForm
 										formData={formData}
@@ -530,7 +552,7 @@ export default function EditStudentPage({
 									/>
 								)}
 
-								<div className="mt-8">
+								{/* <div className="mt-8">
 									<Button
 										type="submit"
 										className="w-full bg-[#881337] hover:bg-[#6e0f2d] text-white py-2 rounded-md shadow-md transition-all duration-200 hover:shadow-lg transform hover:-translate-y-1"
@@ -557,7 +579,7 @@ export default function EditStudentPage({
 											</div>
 										)}
 									</Button>
-								</div>
+								</div> */}
 							</form>
 						</CardContent>
 

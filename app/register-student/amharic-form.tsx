@@ -13,7 +13,6 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import type { StudentFormData } from "../../lib/actions";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Save, UserPlus } from "lucide-react";
 
 interface AmharicFormProps {
@@ -32,14 +31,9 @@ export function AmharicForm({
 	isEditing = false,
 }: AmharicFormProps) {
 	return (
-		<Tabs defaultValue="personal" className="w-full">
-			<TabsList className="grid w-full grid-cols-3 mb-6">
-				<TabsTrigger value="personal">የግል መረጃ</TabsTrigger>
-				<TabsTrigger value="contact">የመገኛ መረጃ</TabsTrigger>
-				<TabsTrigger value="academic">የትምህርት መረጃ</TabsTrigger>
-			</TabsList>
-
-			<TabsContent value="personal" className="space-y-4">
+		<div className="space-y-6">
+			<div className="space-y-4">
+				<h3 className="text-lg font-medium text-gray-900">የግል መረጃ</h3>
 				<div className="grid grid-cols-2 gap-4">
 					<div className="space-y-2">
 						<Label htmlFor="firstName" className="text-sm font-medium">
@@ -120,13 +114,13 @@ export function AmharicForm({
 						<SelectContent>
 							<SelectItem value="Male">ወንድ</SelectItem>
 							<SelectItem value="Female">ሴት</SelectItem>
-							<SelectItem value="Other">ሌላ</SelectItem>
 						</SelectContent>
 					</Select>
 				</div>
-			</TabsContent>
+			</div>
 
-			<TabsContent value="contact" className="space-y-4">
+			<div className="space-y-4">
+				<h3 className="text-lg font-medium text-gray-900">የመገኛ መረጃ</h3>
 				<div className="space-y-2">
 					<Label htmlFor="phone" className="text-sm font-medium">
 						የተማሪ ስልክ ቁጥር
@@ -170,9 +164,10 @@ export function AmharicForm({
 						/>
 					</div>
 				</div>
-			</TabsContent>
+			</div>
 
-			<TabsContent value="academic" className="space-y-4">
+			<div className="space-y-4">
+				<h3 className="text-lg font-medium text-gray-900">የትምህርት መረጃ</h3>
 				<div className="space-y-2">
 					<Label htmlFor="branch" className="text-sm font-medium">
 						ቅርንጫፍ *
@@ -219,7 +214,7 @@ export function AmharicForm({
 						</SelectContent>
 					</Select>
 				</div>
-			</TabsContent>
+			</div>
 
 			<div className="mt-8">
 				<Button
@@ -243,6 +238,6 @@ export function AmharicForm({
 					)}
 				</Button>
 			</div>
-		</Tabs>
+		</div>
 	);
 }
