@@ -49,7 +49,7 @@ export default function EditStudentPage({
 }) {
 	const router = useRouter();
 	const { studentId } = params;
-	const [lang, setLang] = useState<Language>("en");
+	const [lang, setLang] = useState<Language>("am");
 	const [formData, setFormData] = useState<StudentFormData>({
 		firstName: "",
 		lastName: "",
@@ -62,6 +62,7 @@ export default function EditStudentPage({
 		branch: "",
 		grade: "",
 		status: "Active",
+		dateOfBirth: "",
 	});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
@@ -118,11 +119,11 @@ export default function EditStudentPage({
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
-		setFormData((prev: any) => ({ ...prev, [name]: value }));
+		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
 	const handleSelectChange = (name: string) => (value: string) => {
-		setFormData((prev: any) => ({ ...prev, [name]: value }));
+		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
 	const handleSubmit = async (e: React.FormEvent) => {
@@ -175,6 +176,7 @@ export default function EditStudentPage({
 			branch: "",
 			grade: "",
 			status: "Active",
+			dateOfBirth: "",
 		});
 		setIsEditing(false);
 		router.push("/register-student/new");
@@ -237,29 +239,29 @@ export default function EditStudentPage({
 										{isEditing
 											? lang === "en"
 												? "Edit Student"
-												: "ተማሪን ያርትዑ"
+												: "የልጅዎን ሙሉ መረጃ ያስተካክሉ"
 											: lang === "en"
 											? "Student Registration"
 											: "የተማሪ ምዝገባ"}
 									</CardTitle>
 								</div>
 
-								{isEditing && (
+								{/* {isEditing && (
 									<Button
 										variant="outline"
 										size="sm"
-										className="text-red-900 border-white hover:bg-white/20"
+										className="text-white border-white hover:bg-white/20"
 										onClick={resetForm}>
 										<PlusCircle className="mr-1 h-4 w-4" />
 										{lang === "en" ? "New Form" : "አዲስ ቅጽ"}
 									</Button>
-								)}
+								)} */}
 							</div>
 							<CardDescription className="text-gray-100">
 								{isEditing
 									? lang === "en"
 										? "Update the student information below"
-										: "ከዚህ በታች ያለውን የተማሪ መረጃ ያዘምኑ"
+										: "ችግር ያለበትን ቦታ ያስተካክሉ"
 									: lang === "en"
 									? "Fill out the form below to register a new student"
 									: "አዲስ ተማሪ ለመመዝገብ ከዚህ በታች ያለውን ቅጽ ይሙሉ"}
@@ -331,17 +333,16 @@ export default function EditStudentPage({
 														required
 													/>
 												</div>
-
 												<div className="space-y-2">
 													<Label
-														htmlFor="lastName"
+														htmlFor="middleName"
 														className="text-sm font-medium">
-														Last Name *
+														Middle Name *
 													</Label>
 													<Input
-														id="lastName"
-														name="lastName"
-														value={formData.lastName}
+														id="middleName"
+														name="middleName"
+														value={formData.middleName || ""}
 														onChange={handleInputChange}
 														className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
 														required
@@ -351,16 +352,17 @@ export default function EditStudentPage({
 
 											<div className="space-y-2">
 												<Label
-													htmlFor="middleName"
+													htmlFor="lastName"
 													className="text-sm font-medium">
-													Middle Name
+													Last Name *
 												</Label>
 												<Input
-													id="middleName"
-													name="middleName"
-													value={formData.middleName || ""}
+													id="lastName"
+													name="lastName"
+													value={formData.lastName}
 													onChange={handleInputChange}
 													className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+													required
 												/>
 											</div>
 
@@ -390,7 +392,7 @@ export default function EditStudentPage({
 
 											<div className="space-y-2">
 												<Label htmlFor="gender" className="text-sm font-medium">
-													Gender
+													Gender *
 												</Label>
 												<Select
 													value={formData.gender || ""}
@@ -405,6 +407,23 @@ export default function EditStudentPage({
 														<SelectItem value="Female">Female</SelectItem>
 													</SelectContent>
 												</Select>
+											</div>
+
+											<div className="space-y-2">
+												<Label
+													htmlFor="dateOfBirth"
+													className="text-sm font-medium">
+													Date of Birth *
+												</Label>
+												<Input
+													id="dateOfBirth"
+													name="dateOfBirth"
+													type="date"
+													value={formData.dateOfBirth || ""}
+													onChange={handleInputChange}
+													className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+													required
+												/>
 											</div>
 										</div>
 
@@ -467,7 +486,7 @@ export default function EditStudentPage({
 											</h3>
 											<div className="space-y-2">
 												<Label htmlFor="branch" className="text-sm font-medium">
-													Branch *
+													School Branch *
 												</Label>
 												<Input
 													id="branch"
@@ -490,26 +509,6 @@ export default function EditStudentPage({
 													onChange={handleInputChange}
 													className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
 												/>
-											</div>
-
-											<div className="space-y-2">
-												<Label htmlFor="status" className="text-sm font-medium">
-													Status
-												</Label>
-												<Select
-													value={formData.status || "Active"}
-													onValueChange={handleSelectChange("status")}>
-													<SelectTrigger
-														id="status"
-														className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50">
-														<SelectValue placeholder="Select status" />
-													</SelectTrigger>
-													<SelectContent>
-														<SelectItem value="Active">Active</SelectItem>
-														<SelectItem value="Inactive">Inactive</SelectItem>
-														<SelectItem value="Pending">Pending</SelectItem>
-													</SelectContent>
-												</Select>
 											</div>
 										</div>
 

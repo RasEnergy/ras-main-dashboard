@@ -33,6 +33,7 @@ model Student {
   grade        String?
   profileImage String?
   status       String?
+  dateOfBirth  String?
   products     Product[]
   orders       Order[]
   createdAt    DateTime  @default(now())
