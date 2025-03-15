@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import prisma from "@/lib/prisma";
 
-// Update the studentSchema to include dateOfBirth
+// Update the studentSchema to include additionalNotes
 const studentSchema = z.object({
 	firstName: z.string().min(1, "First name is required"),
 	lastName: z.string().min(1, "Last name is required"),
@@ -17,6 +17,11 @@ const studentSchema = z.object({
 	status: z.string().optional().nullable().default("Active"),
 	profileImage: z.string().optional().nullable(),
 	dateOfBirth: z.string().optional().nullable(),
+	additionalNotes: z
+		.string()
+		.max(200, "Additional notes cannot exceed 200 characters")
+		.optional()
+		.nullable(),
 });
 
 export async function GET(request: Request) {
@@ -102,6 +107,7 @@ export async function POST(request: Request) {
 				status: validatedData.status || "Active",
 				profileImage: validatedData.profileImage || null,
 				dateOfBirth: validatedData.dateOfBirth || null,
+				additionalNotes: validatedData.additionalNotes || null,
 			},
 		});
 
@@ -172,6 +178,7 @@ export async function PUT(request: Request) {
 				status: validatedData.status || "Active",
 				profileImage: validatedData.profileImage || null,
 				dateOfBirth: validatedData.dateOfBirth || null,
+				additionalNotes: validatedData.additionalNotes || null,
 			},
 		});
 

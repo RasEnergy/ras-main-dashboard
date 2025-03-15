@@ -37,10 +37,14 @@ import {
 	ArrowLeft,
 	Save,
 	UserPlus,
+	Info,
 } from "lucide-react";
 import { AmharicForm } from "../amharic-form";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Textarea } from "@/components/ui/textarea";
+import { CharacterCounter } from "@/components/character-counter";
+import { cn } from "@/lib/utils";
 
 export default function EditStudentPage({
 	params,
@@ -63,6 +67,7 @@ export default function EditStudentPage({
 		grade: "",
 		status: "Active",
 		dateOfBirth: "",
+		additionalNotes: "",
 	});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
@@ -122,6 +127,15 @@ export default function EditStudentPage({
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
+	const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		const { name, value } = e.target;
+		// Limit to 200 characters
+		if (name === "additionalNotes" && value.length <= 200) {
+			setFormData((prev) => ({ ...prev, [name]: value }));
+		} else if (name !== "additionalNotes") {
+			setFormData((prev) => ({ ...prev, [name]: value }));
+		}
+	};
 	const handleSelectChange = (name: string) => (value: string) => {
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
@@ -177,6 +191,7 @@ export default function EditStudentPage({
 			grade: "",
 			status: "Active",
 			dateOfBirth: "",
+			additionalNotes: "",
 		});
 		setIsEditing(false);
 		router.push("/register-student/new");
@@ -239,7 +254,7 @@ export default function EditStudentPage({
 										{isEditing
 											? lang === "en"
 												? "Edit Student"
-												: "የልጅዎን ሙሉ መረጃ ያስተካክሉ"
+												: "የልጅዎን ሙሉ መረጃ በጥንቃቄ ያስተካክሉ"
 											: lang === "en"
 											? "Student Registration"
 											: "የተማሪ ምዝገባ"}
@@ -261,7 +276,7 @@ export default function EditStudentPage({
 								{isEditing
 									? lang === "en"
 										? "Update the student information below"
-										: "ችግር ያለበትን ቦታ ያስተካክሉ"
+										: "ችግር ያለበትን ቦታ ያስተካክሉ | ያልተሞላውን ይምሉት"
 									: lang === "en"
 									? "Fill out the form below to register a new student"
 									: "አዲስ ተማሪ ለመመዝገብ ከዚህ በታች ያለውን ቅጽ ይሙሉ"}
@@ -512,6 +527,41 @@ export default function EditStudentPage({
 											</div>
 										</div>
 
+										<div className="space-y-4">
+											<h3 className="text-lg font-medium text-gray-900">
+												Additional Information
+											</h3>
+											<div className="space-y-2">
+												<div className="flex items-center justify-between">
+													<Label
+														htmlFor="additionalNotes"
+														className="text-sm font-medium flex items-center">
+														Additional Notes{" "}
+														<Info className="h-3.5 w-3.5 ml-1 text-gray-400" />
+													</Label>
+												</div>
+												<Textarea
+													id="additionalNotes"
+													name="additionalNotes"
+													value={formData.additionalNotes || ""}
+													onChange={handleTextareaChange}
+													className={cn(
+														"min-h-[100px] transition-colors",
+														formData.additionalNotes &&
+															formData.additionalNotes.length > 180 &&
+															"border-amber-300 focus-visible:ring-amber-300"
+													)}
+													placeholder="Enter any additional information about the student"
+												/>
+												<CharacterCounter
+													current={formData.additionalNotes?.length || 0}
+													max={200}
+													showWarningAt={90}
+													className="mt-1"
+												/>
+											</div>
+										</div>
+
 										<div className="mt-8">
 											<Button
 												type="submit"
@@ -545,6 +595,7 @@ export default function EditStudentPage({
 									<AmharicForm
 										formData={formData}
 										handleInputChange={handleInputChange}
+										handleTextareaChange={handleTextareaChange}
 										handleSelectChange={handleSelectChange}
 										isSubmitting={isSubmitting}
 										isEditing={isEditing}

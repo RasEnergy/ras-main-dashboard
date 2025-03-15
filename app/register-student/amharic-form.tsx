@@ -18,6 +18,7 @@ import { Save, UserPlus } from "lucide-react";
 interface AmharicFormProps {
 	formData: StudentFormData;
 	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleTextareaChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 	handleSelectChange: (name: string) => (value: string) => void;
 	isSubmitting: boolean;
 	isEditing?: boolean;
@@ -28,6 +29,7 @@ export function AmharicForm({
 	handleInputChange,
 	handleSelectChange,
 	isSubmitting,
+	handleTextareaChange,
 	isEditing = false,
 }: AmharicFormProps) {
 	return (
@@ -207,6 +209,40 @@ export function AmharicForm({
 						value={formData.grade || ""}
 						onChange={handleInputChange}
 						className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+					/>
+				</div>
+			</div>
+
+			{/* Add this after the Academic Information section */}
+			<div className="space-y-4 mt-6">
+				<h3 className="text-lg font-medium text-gray-900">ተጨማሪ መረጃ</h3>
+				<div className="space-y-2">
+					<div className="flex justify-between">
+						<Label htmlFor="additionalNotes" className="text-sm font-medium">
+							ተጨማሪ ማስታወሻዎች
+						</Label>
+						<span
+							className={`text-xs ${
+								formData.additionalNotes &&
+								formData.additionalNotes.length > 180
+									? "text-amber-600"
+									: "text-gray-500"
+							}`}>
+							{formData.additionalNotes ? formData.additionalNotes.length : 0}
+							/200
+						</span>
+					</div>
+					<textarea
+						id="additionalNotes"
+						name="additionalNotes"
+						value={formData.additionalNotes || ""}
+						onChange={handleTextareaChange}
+						className={`w-full rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50 min-h-[100px] ${
+							formData.additionalNotes && formData.additionalNotes.length > 180
+								? "border-amber-300"
+								: ""
+						}`}
+						placeholder="ስለ ተማሪው ማንኛውንም ተጨማሪ መረጃ ያስገቡ (ከፍተኛው 200 ቁምፊዎች)"
 					/>
 				</div>
 			</div>
