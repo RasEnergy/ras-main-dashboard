@@ -16,19 +16,21 @@ import type { StudentFormData } from "../../lib/actions";
 import { Save, UserPlus } from "lucide-react";
 
 interface AmharicFormProps {
-  formData: StudentFormData
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleSelectChange: (name: string) => (value: string) => void
-  isSubmitting: boolean
-  isEditing?: boolean
+	formData: StudentFormData;
+	handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	handleTextareaChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+	handleSelectChange: (name: string) => (value: string) => void;
+	isSubmitting: boolean;
+	isEditing?: boolean;
 }
 
 export function AmharicForm({
-  formData,
-  handleInputChange,
-  handleSelectChange,
-  isSubmitting,
-  isEditing = false,
+	formData,
+	handleInputChange,
+	handleSelectChange,
+	isSubmitting,
+	handleTextareaChange,
+	isEditing = false,
 }: AmharicFormProps) {
 	return (
 		<div className="space-y-6">
@@ -48,15 +50,14 @@ export function AmharicForm({
 							required
 						/>
 					</div>
-
 					<div className="space-y-2">
-						<Label htmlFor="lastName" className="text-sm font-medium">
+						<Label htmlFor="middleName" className="text-sm font-medium">
 							የአባት ስም *
 						</Label>
 						<Input
-							id="lastName"
-							name="lastName"
-							value={formData.lastName}
+							id="middleName"
+							name="middleName"
+							value={formData.middleName || ""}
 							onChange={handleInputChange}
 							className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
 							required
@@ -65,15 +66,16 @@ export function AmharicForm({
 				</div>
 
 				<div className="space-y-2">
-					<Label htmlFor="middleName" className="text-sm font-medium">
-						የአያት ስም
+					<Label htmlFor="lastName" className="text-sm font-medium">
+						የአያት ስም *
 					</Label>
 					<Input
-						id="middleName"
-						name="middleName"
-						value={formData.middleName || ""}
+						id="lastName"
+						name="lastName"
+						value={formData.lastName}
 						onChange={handleInputChange}
 						className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+						required
 					/>
 				</div>
 
@@ -116,6 +118,21 @@ export function AmharicForm({
 							<SelectItem value="Female">ሴት</SelectItem>
 						</SelectContent>
 					</Select>
+				</div>
+
+				<div className="space-y-2">
+					<Label htmlFor="dateOfBirth" className="text-sm font-medium">
+						የትውልድ ቀን *
+					</Label>
+					<Input
+						id="dateOfBirth"
+						name="dateOfBirth"
+						type="date"
+						value={formData.dateOfBirth || ""}
+						onChange={handleInputChange}
+						className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
+						required
+					/>
 				</div>
 			</div>
 
@@ -170,7 +187,7 @@ export function AmharicForm({
 				<h3 className="text-lg font-medium text-gray-900">የትምህርት መረጃ</h3>
 				<div className="space-y-2">
 					<Label htmlFor="branch" className="text-sm font-medium">
-						ቅርንጫፍ *
+						የትምህርት ቤቱ ቅርንጫፍ *
 					</Label>
 					<Input
 						id="branch"
@@ -194,25 +211,39 @@ export function AmharicForm({
 						className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50"
 					/>
 				</div>
+			</div>
 
+			{/* Add this after the Academic Information section */}
+			<div className="space-y-4 mt-6">
+				<h3 className="text-lg font-medium text-gray-900">ተጨማሪ መረጃ</h3>
 				<div className="space-y-2">
-					<Label htmlFor="status" className="text-sm font-medium">
-						ሁኔታ
-					</Label>
-					<Select
-						value={formData.status || "Active"}
-						onValueChange={handleSelectChange("status")}>
-						<SelectTrigger
-							id="status"
-							className="rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50">
-							<SelectValue placeholder="ሁኔታ ይምረጡ" />
-						</SelectTrigger>
-						<SelectContent>
-							<SelectItem value="Active">ንቁ</SelectItem>
-							<SelectItem value="Inactive">ንቁ ያልሆነ</SelectItem>
-							<SelectItem value="Pending">በመጠባበቅ ላይ</SelectItem>
-						</SelectContent>
-					</Select>
+					<div className="flex justify-between">
+						<Label htmlFor="additionalNotes" className="text-sm font-medium">
+							ተጨማሪ ማስታወሻዎች
+						</Label>
+						<span
+							className={`text-xs ${
+								formData.additionalNotes &&
+								formData.additionalNotes.length > 180
+									? "text-amber-600"
+									: "text-gray-500"
+							}`}>
+							{formData.additionalNotes ? formData.additionalNotes.length : 0}
+							/200
+						</span>
+					</div>
+					<textarea
+						id="additionalNotes"
+						name="additionalNotes"
+						value={formData.additionalNotes || ""}
+						onChange={handleTextareaChange}
+						className={`w-full rounded-md border-gray-300 focus:border-[#881337] focus:ring focus:ring-[#881337] focus:ring-opacity-50 min-h-[100px] ${
+							formData.additionalNotes && formData.additionalNotes.length > 180
+								? "border-amber-300"
+								: ""
+						}`}
+						placeholder="ስለ ተማሪው ማንኛውንም ተጨማሪ መረጃ ያስገቡ (ከፍተኛው 200 ቁምፊዎች)"
+					/>
 				</div>
 			</div>
 

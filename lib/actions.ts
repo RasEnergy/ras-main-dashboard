@@ -3,7 +3,7 @@
 import { z } from "zod";
 import prisma from "@/lib/prisma";
 
-// Define validation schema based on your Prisma model
+// Update the studentSchema to include additionalNotes
 const studentSchema = z.object({
 	id: z.string().optional(),
 	firstName: z.string().min(1, "First name is required"),
@@ -18,6 +18,12 @@ const studentSchema = z.object({
 	grade: z.string().optional().nullable(),
 	status: z.string().optional().nullable().default("Active"),
 	profileImage: z.string().optional().nullable(),
+	dateOfBirth: z.string().optional().nullable(),
+	additionalNotes: z
+		.string()
+		.max(200, "Additional notes cannot exceed 200 characters")
+		.optional()
+		.nullable(),
 });
 
 export type StudentFormData = z.infer<typeof studentSchema>;
@@ -52,7 +58,7 @@ export async function registerStudent(formData: StudentFormData) {
 			};
 		}
 
-		// Create new student
+		// Update the registerStudent function to include additionalNotes
 		const student = await prisma.student.create({
 			data: {
 				firstName: validatedData.firstName,
@@ -67,6 +73,8 @@ export async function registerStudent(formData: StudentFormData) {
 				grade: validatedData.grade || null,
 				status: validatedData.status || "Active",
 				profileImage: validatedData.profileImage || null,
+				dateOfBirth: validatedData.dateOfBirth || null,
+				additionalNotes: validatedData.additionalNotes || null,
 			},
 		});
 
@@ -110,7 +118,7 @@ export async function updateStudent(formData: StudentFormData) {
 			};
 		}
 
-		// Update student
+		// Update the updateStudent function to include additionalNotes
 		const student = await prisma.student.update({
 			where: { studentId: validatedData.studentId },
 			data: {
@@ -125,6 +133,8 @@ export async function updateStudent(formData: StudentFormData) {
 				grade: validatedData.grade || null,
 				status: validatedData.status || "Active",
 				profileImage: validatedData.profileImage || null,
+				dateOfBirth: validatedData.dateOfBirth || null,
+				additionalNotes: validatedData.additionalNotes || null,
 			},
 		});
 

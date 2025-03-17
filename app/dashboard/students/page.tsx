@@ -590,7 +590,7 @@ export default function StudentsPage() {
 											<TableCell>
 												{(currentPage - 1) * 10 + index + 1}
 											</TableCell>
-											<TableCell className="font-medium">{`${student.firstName} ${student.lastName}`}</TableCell>
+											<TableCell className="font-medium">{student?.middleName ? `${student.firstName} ${student?.middleName} ${student.lastName}` : `${student.firstName} ${student.lastName}`}</TableCell>
 											<TableCell>{student.studentId}</TableCell>
 											<TableCell>{student.father_phone || "N/A"}</TableCell>
 											<TableCell>{student.mother_phone || "N/A"}</TableCell>
