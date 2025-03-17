@@ -253,7 +253,7 @@ export default function EditStudentPage({
 									<CardTitle className="text-xl">
 										{isEditing
 											? lang === "en"
-												? "Edit Student"
+												? "Carefully update your child's full information."
 												: "የልጅዎን ሙሉ መረጃ በጥንቃቄ ያስተካክሉ"
 											: lang === "en"
 											? "Student Registration"
