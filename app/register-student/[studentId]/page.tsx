@@ -53,7 +53,7 @@ export default function EditStudentPage({
 }) {
 	const router = useRouter();
 	const { studentId } = params;
-	const [lang, setLang] = useState<Language>("am");
+	const [lang, setLang] = useState<Language>("en");
 	const [formData, setFormData] = useState<StudentFormData>({
 		firstName: "",
 		lastName: "",
