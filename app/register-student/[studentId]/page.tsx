@@ -53,7 +53,7 @@ export default function EditStudentPage({
 }) {
 	const router = useRouter();
 	const { studentId } = params;
-	const [lang, setLang] = useState<Language>("am");
+	const [lang, setLang] = useState<Language>("en");
 	const [formData, setFormData] = useState<StudentFormData>({
 		firstName: "",
 		lastName: "",
@@ -253,7 +253,7 @@ export default function EditStudentPage({
 									<CardTitle className="text-xl">
 										{isEditing
 											? lang === "en"
-												? "Edit Student"
+												? "Carefully update your child's full information."
 												: "የልጅዎን ሙሉ መረጃ በጥንቃቄ ያስተካክሉ"
 											: lang === "en"
 											? "Student Registration"
