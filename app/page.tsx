@@ -390,11 +390,11 @@ export default function HomePage() {
 				<div className="relative mb-16">
 					<div className="absolute inset-0 z-0">
 						<Image
-							src="/assets/images/hero4.png?height=800&width=1600"
+							src="/assets/images/hero7.jpg?height=800&width=1600"
 							alt="Hero background"
 							layout="fill"
 							objectFit="cover"
-							className="rounded-lg"
+							className="rounded-lg opacity-25"
 						/>
 						<div className="absolute inset-0 bg-gradient-to-r from-[#881337]/70 to-[#6e0f2d]/70 mix-blend-multiply" />
 					</div>
